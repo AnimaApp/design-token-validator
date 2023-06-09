@@ -13,12 +13,20 @@ type Type =
   | "gradient"
   | "typography";
 
-export interface Token {
-  [key: string]: {
-    $value: string;
-    $type: Type;
-  };
-}
+export type Tokens = TokenGroup | TokenValue;
+
+export type Token = {
+  [key: string]: TokenValue;
+};
+
+export type TokenValue = {
+  $value: string;
+  $type: Type;
+};
+
+export type TokenGroup = {
+  [key: string]: TokenValue | TokenGroup;
+};
 
 interface Result {
   message: string;
