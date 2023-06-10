@@ -20,6 +20,10 @@ describe("validate", () => {
         $value: 400,
         $type: "fontWeight",
       },
+      "duration token": {
+        $value: "200ms",
+        $type: "duration",
+      },
     };
 
     const results = validate(tokens);

@@ -43,6 +43,11 @@ type FontWeightToken = {
   $type: "fontWeight";
 };
 
+type DurationToken = {
+  $value: `${number}ms`;
+  $type: "duration";
+};
+
 type BasicToken = {
   $value: string;
   $type: Type | undefined;
@@ -53,6 +58,7 @@ export type TokenValue =
   | DimensionToken
   | FontFamilyToken
   | FontWeightToken
+  | DurationToken
   | BasicToken;
 
 export type TokenGroup = {

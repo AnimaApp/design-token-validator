@@ -2,6 +2,7 @@ import { TokenValue, Type } from "../types.js";
 import { Context } from "../validate.js";
 import { validateColor } from "./color.js";
 import { validateDimension } from "./dimension.js";
+import { validateDuration } from "./duration.js";
 import { validateFontFamily } from "./fontFamily.js";
 import { validateFontWeight } from "./fontWeight.js";
 
@@ -23,7 +24,8 @@ export const typeValidators: Record<Type, TokenValidator<Type>> = {
   cubicBezier: () => false,
   // @ts-expect-error
   dimension: validateDimension,
-  duration: () => false,
+  // @ts-expect-error
+  duration: validateDuration,
   // @ts-expect-error
   fontFamily: validateFontFamily,
   // @ts-expect-error
