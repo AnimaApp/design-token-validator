@@ -39,6 +39,14 @@ describe("validate", () => {
         },
         $type: "strokeStyle",
       },
+      "border token": {
+        $value: {
+          color: "#fff000",
+          width: "1rem",
+          style: "solid",
+        },
+        $type: "border",
+      },
     };
 
     const results = validate(tokens);

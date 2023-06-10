@@ -1,5 +1,6 @@
 import { TokenValue, Type } from "../types.js";
 import { Context } from "../validate.js";
+import { validateBorder } from "./border.js";
 import { validateColor } from "./color.js";
 import { validateCubicBezier } from "./cubicBezier.js";
 import { validateDimension } from "./dimension.js";
@@ -21,7 +22,8 @@ export type TokenValidator<T extends Type> = (
   We can remove these once we can get TS to narrow correctly
 */
 export const typeValidators: Record<Type, TokenValidator<Type>> = {
-  border: () => false,
+  // @ts-expect-error
+  border: validateBorder,
   // @ts-expect-error
   color: validateColor,
   // @ts-expect-error

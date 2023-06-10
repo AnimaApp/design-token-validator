@@ -76,6 +76,15 @@ type StrokeStyleToken = {
   $type: "strokeStyle";
 };
 
+type BorderToken = {
+  $value: {
+    color: ColorToken["$value"];
+    width: DimensionToken["$value"];
+    style: StrokeStyleToken["$value"];
+  };
+  $type: "border";
+};
+
 type BasicToken = {
   $value: string;
   $type: Type | undefined;
@@ -90,6 +99,7 @@ export type TokenValue =
   | CubicBezierToken
   | NumberToken
   | StrokeStyleToken
+  | BorderToken
   | BasicToken;
 
 export type TokenGroup = {

@@ -25,7 +25,7 @@ If you want to run this locally then follow the installation instructions
 - [x] cubic bezier validation
 - [x] number validation
 - [x] stroke style validation
-- [ ] border validation
+- [x] border validation
 - [ ] transition validation
 - [ ] shadow validation
 - [ ] gradient validation
