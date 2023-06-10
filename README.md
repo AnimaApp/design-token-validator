@@ -26,7 +26,7 @@ If you want to run this locally then follow the installation instructions
 - [x] number validation
 - [x] stroke style validation
 - [x] border validation
-- [ ] transition validation
+- [x] transition validation
 - [ ] shadow validation
 - [ ] gradient validation
 - [ ] typography validtion

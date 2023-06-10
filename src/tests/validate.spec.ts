@@ -47,6 +47,14 @@ describe("validate", () => {
         },
         $type: "border",
       },
+      "transition token": {
+        $value: {
+          delay: "10ms",
+          duration: "100ms",
+          timingFunction: [1, 2, 0.5, 20],
+        },
+        $type: "transition",
+      },
     };
 
     const results = validate(tokens);

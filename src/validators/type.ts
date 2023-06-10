@@ -9,6 +9,7 @@ import { validateFontFamily } from "./fontFamily.js";
 import { validateFontWeight } from "./fontWeight.js";
 import { validateNumber } from "./number.js";
 import { validateStrokeStyle } from "./strokeStyle.js";
+import { validateTransition } from "./transition.js";
 
 export type TokenValidator<T extends Type> = (
   value: Extract<TokenValue, { $type: T }>["$value"],
@@ -42,6 +43,7 @@ export const typeValidators: Record<Type, TokenValidator<Type>> = {
   shadow: () => false,
   // @ts-expect-error
   strokeStyle: validateStrokeStyle,
-  transition: () => false,
+  // @ts-expect-error
+  transition: validateTransition,
   typography: () => false,
 };

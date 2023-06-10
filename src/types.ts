@@ -85,6 +85,15 @@ type BorderToken = {
   $type: "border";
 };
 
+type TransitionToken = {
+  $value: {
+    duration: DurationToken["$value"];
+    delay: DurationToken["$value"];
+    timingFunction: CubicBezierToken["$value"];
+  };
+  $type: "transition";
+};
+
 type BasicToken = {
   $value: string;
   $type: Type | undefined;
@@ -100,6 +109,7 @@ export type TokenValue =
   | NumberToken
   | StrokeStyleToken
   | BorderToken
+  | TransitionToken
   | BasicToken;
 
 export type TokenGroup = {
