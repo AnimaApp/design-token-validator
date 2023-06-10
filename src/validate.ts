@@ -1,5 +1,7 @@
+import { getTokenType } from "./helpers/getTokenType.js";
 import { Results, Tokens } from "./types.js";
 import { validateBaseToken } from "./validators/baseToken.js";
+import { typeValidators } from "./validators/type.js";
 import { VisitorFunctions, walk } from "./walk.js";
 
 export interface Context {
@@ -14,9 +16,20 @@ export const validate = (tokens: Tokens): Results => {
   };
 
   const visitorFunctions: VisitorFunctions = {
-    group: () => {},
+    group: () => {
+      // TODO: validate group
+    },
     token: (token) => {
-      validateBaseToken(token, context);      
+      validateBaseToken(token, context);
+
+      const tokenValue = Object.values(token)[0];
+      const type = getTokenType(tokenValue, context);
+      const { $value } = tokenValue;
+
+      if (type && $value) {
+        const typeValidator = typeValidators[type];
+        typeValidator(tokenValue.$value, context);
+      }
     },
   };
 

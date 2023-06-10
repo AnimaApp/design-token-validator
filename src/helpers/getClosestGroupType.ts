@@ -1,1 +1,1 @@
-export const getClosestGroupType = (token: any, context: any) => false;
+export const getClosestGroupType = (token: any, context: any) => "";

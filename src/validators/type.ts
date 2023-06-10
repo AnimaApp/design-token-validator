@@ -1,8 +1,15 @@
-import { Token, Type } from "../types.js";
+import { TokenValue, Type } from "../types.js";
+import { Context } from "../validate.js";
+import { colorValidator } from "./color.js";
 
-export const typeValidators: Record<Type, (token: Token) => boolean> = {
+export type TokenValidator = (
+  token: TokenValue["$value"],
+  context: Context
+) => boolean;
+
+export const typeValidators: Record<Type, TokenValidator> = {
   border: () => false,
-  color: () => false,
+  color: colorValidator,
   cubicBezier: () => false,
   dimension: () => false,
   duration: () => false,
