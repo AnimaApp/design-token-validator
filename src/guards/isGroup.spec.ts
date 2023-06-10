@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { isGroup } from "./isGroup.js";
-import { TokenGroup, Tokens } from "../types.js";
+import { Token, TokenGroup } from "../types.js";
 
 describe("isGroup", () => {
   it("returns true if token is a group", () => {
@@ -27,7 +27,7 @@ describe("isGroup", () => {
   });
 
   it("returns false if token is not a group", () => {
-    const token: Tokens = {
+    const token: Token = {
       "token dos": {
         $value: "2rem",
         $type: "dimension",

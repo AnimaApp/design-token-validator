@@ -1,7 +1,8 @@
-import { Results, Token } from "../types.js";
+import { Token } from "../types.js";
+import { Context } from "../validate.js";
 
-export const base = (token: Token) => {
-  const results: Results = [];
+export const validateBaseToken = (token: Token, context: Context) => {
+  const results = context.messages;
 
   const name = Object.keys(token)[0];
 
@@ -58,7 +59,5 @@ export const base = (token: Token) => {
   // - error
 
   // alias
-  // - must resolve to a value
-
-  return results;
+  // - must resolve to
 };

@@ -1,8 +1,17 @@
-import { describe, it, expect } from "vitest";
-import { base } from "./base.js";
+import { describe, it, expect, beforeEach } from "vitest";
+import { validateBaseToken } from "./baseToken.js";
 import { Token } from "../types.js";
 
-describe("base", () => {
+const context = {
+  tokens: {},
+  messages: [],
+};
+
+describe("validateBaseToken ", () => {
+  beforeEach(() => {
+    context.messages = [];
+  });
+
   it("passes a valid token", () => {
     const token: Token = {
       "token name": {
@@ -11,9 +20,9 @@ describe("base", () => {
       },
     };
 
-    const results = base(token);
+    validateBaseToken(token, context);
 
-    expect(results.length).toBe(0);
+    expect(context.messages.length).toBe(0);
   });
 
   it("fails a token if name is a number", () => {
@@ -24,9 +33,9 @@ describe("base", () => {
       },
     };
 
-    const results = base(token);
+    validateBaseToken(token, context);
 
-    expect(results.length).toBe(1);
+    expect(context.messages.length).toBe(1);
   });
 
   it("fails a token if name begins with $", () => {
@@ -37,9 +46,9 @@ describe("base", () => {
       },
     };
 
-    const results = base(token);
+    validateBaseToken(token, context);
 
-    expect(results.length).toBe(1);
+    expect(context.messages.length).toBe(1);
   });
 
   it("fails a token if name includes {", () => {
@@ -50,9 +59,9 @@ describe("base", () => {
       },
     };
 
-    const results = base(token);
+    validateBaseToken(token, context);
 
-    expect(results.length).toBe(1);
+    expect(context.messages.length).toBe(1);
   });
 
   it("fails a token if name includes }", () => {
@@ -63,9 +72,9 @@ describe("base", () => {
       },
     };
 
-    const results = base(token);
+    validateBaseToken(token, context);
 
-    expect(results.length).toBe(1);
+    expect(context.messages.length).toBe(1);
   });
 
   it("fails a token if name includes .", () => {
@@ -76,9 +85,9 @@ describe("base", () => {
       },
     };
 
-    const results = base(token);
+    validateBaseToken(token, context);
 
-    expect(results.length).toBe(1);
+    expect(context.messages.length).toBe(1);
   });
 
   it("fails a token if no value is present", () => {
@@ -88,8 +97,8 @@ describe("base", () => {
       },
     };
 
-    const results = base(token);
+    validateBaseToken(token, context);
 
-    expect(results.length).toBe(1);
+    expect(context.messages.length).toBe(1);
   });
 });

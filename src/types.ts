@@ -1,4 +1,4 @@
-type Type =
+export type Type =
   | "color"
   | "dimension"
   | "fontFamily"

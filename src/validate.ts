@@ -1,19 +1,26 @@
-// take a token and return results
-
-import { isGroup } from "./guards/isGroup.js";
 import { Results, Tokens } from "./types.js";
+import { validateBaseToken } from "./validators/baseToken.js";
+import { VisitorFunctions, walk } from "./walk.js";
+
+export interface Context {
+  messages: Results;
+  tokens: Tokens;
+}
 
 export const validate = (tokens: Tokens): Results => {
-  // check is group
+  const context: Context = {
+    messages: [],
+    tokens,
+  };
 
-  if (isGroup({})) {
-    // validate group
-    // call validate
-  }
-  // TODO: recursive function to walk the tree
+  const visitorFunctions: VisitorFunctions = {
+    group: () => {},
+    token: (token) => {
+      validateBaseToken(token, context);
+    },
+  };
 
-  // if token is group, then validate the group and go a level deeper
-  // if token is not a group than validate the token
+  walk(tokens, visitorFunctions);
 
-  return [];
+  return context.messages;
 };

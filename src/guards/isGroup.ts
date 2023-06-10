@@ -1,7 +1,18 @@
-import { TokenGroup } from "../types.js";
+import { Token, TokenGroup, TokenValue } from "../types.js";
 
 export const isGroup = (token: TokenGroup) => {
-  if (token.hasOwnProperty("$value") || token.hasOwnProperty("$type")) {
+  const value = Object.values(token)[0];  
+  
+  if (value.hasOwnProperty("$value") || value.hasOwnProperty("$type")) {
+    return false;
+  }
+  
+  return true;
+};
+
+export const isTokenValue = (token: Token) => {
+  const value = Object.values(token)[0];  
+  if (!value.hasOwnProperty("$value") && !value.hasOwnProperty("$type")) {
     return false;
   }
 
