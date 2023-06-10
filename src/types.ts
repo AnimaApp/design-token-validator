@@ -1,3 +1,5 @@
+import { weightAliases } from "./constants.js";
+
 export type Type =
   | "color"
   | "dimension"
@@ -19,10 +21,39 @@ export type Token = {
   [key: string]: TokenValue;
 };
 
-export type TokenValue = {
+export type WeightAlias = (typeof weightAliases)[number];
+
+type ColorToken = {
   $value: string;
-  $type: Type;
+  $type: "color";
 };
+
+type DimensionToken = {
+  $value: string;
+  $type: "dimension";
+};
+
+type FontFamilyToken = {
+  $value: string | string[];
+  $type: "fontFamily";
+};
+
+type FontWeightToken = {
+  $value: number | WeightAlias;
+  $type: "fontWeight";
+};
+
+type BasicToken = {
+  $value: string;
+  $type: Type | undefined;
+};
+
+export type TokenValue =
+  | ColorToken
+  | DimensionToken
+  | FontFamilyToken
+  | FontWeightToken
+  | BasicToken;
 
 export type TokenGroup = {
   [key: string]: TokenValue | TokenGroup;

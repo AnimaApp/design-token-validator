@@ -4,9 +4,21 @@ import { Tokens } from "./types.js";
 describe("validate", () => {
   it("returns an empty array if design tokens are valid", () => {
     const tokens: Tokens = {
-      "token name": {
+      "color token": {
         $value: "#fff000",
         $type: "color",
+      },
+      "dimension token": {
+        $value: "2rem",
+        $type: "dimension",
+      },
+      "font family token": {
+        $value: ["Helvetica", "Arial", "sans-serif"],
+        $type: "fontFamily",
+      },
+      "font weight token": {
+        $value: 400,
+        $type: "fontWeight",
       },
     };
 
