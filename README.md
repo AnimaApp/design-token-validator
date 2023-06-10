@@ -16,15 +16,14 @@ If you want to run this locally then follow the installation instructions
 
 ### Validation
 
-- [ ] Validate JSON file
 - [x] Base validation for every token
 - [x] color validation
 - [x] dimension validation
 - [x] font family validation
 - [x] font weight validation
-- [ ] duration validation
-- [ ] cubic bezier validation
-- [ ] number validation
+- [x] duration validation
+- [x] cubic bezier validation
+- [x] number validation
 - [ ] stroke style validation
 - [ ] border validation
 - [ ] transition validation
@@ -37,6 +36,7 @@ If you want to run this locally then follow the installation instructions
 ### Features
 
 - [ ] Handle resolution of local design token file
+- [ ] Validate JSON file
 - [ ] Handle external resolution of a design token file
 - [ ] Handle inline local design token file
 - [ ] Include link to relevant location in the design system spec

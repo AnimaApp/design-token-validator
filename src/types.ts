@@ -48,6 +48,16 @@ type DurationToken = {
   $type: "duration";
 };
 
+type CubicBezierToken = {
+  $value: [number, number, number, number];
+  $type: "cubicBezier";
+};
+
+type NumberToken = {
+  $value: number;
+  $type: "number";
+};
+
 type BasicToken = {
   $value: string;
   $type: Type | undefined;
@@ -59,6 +69,8 @@ export type TokenValue =
   | FontFamilyToken
   | FontWeightToken
   | DurationToken
+  | CubicBezierToken
+  | NumberToken
   | BasicToken;
 
 export type TokenGroup = {

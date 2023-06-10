@@ -24,6 +24,14 @@ describe("validate", () => {
         $value: "200ms",
         $type: "duration",
       },
+      "bezier token": {
+        $value: [0.25, 0.1, 0.25, 1.0],
+        $type: "cubicBezier",
+      },
+      "number token": {
+        $value: 10000,
+        $type: "number",
+      },
     };
 
     const results = validate(tokens);
