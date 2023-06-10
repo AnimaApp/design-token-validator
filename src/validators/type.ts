@@ -1,17 +1,18 @@
 import { TokenValue, Type } from "../types.js";
 import { Context } from "../validate.js";
-import { colorValidator } from "./color.js";
+import { validateColor } from "./color.js";
+import { validateDimension } from "./dimension.js";
 
 export type TokenValidator = (
-  token: TokenValue["$value"],
+  value: TokenValue["$value"],
   context: Context
 ) => boolean;
 
 export const typeValidators: Record<Type, TokenValidator> = {
   border: () => false,
-  color: colorValidator,
+  color: validateColor,
   cubicBezier: () => false,
-  dimension: () => false,
+  dimension: validateDimension,
   duration: () => false,
   fontFamily: () => false,
   fontWeight: () => false,

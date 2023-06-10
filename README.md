@@ -1,8 +1,10 @@
 # Design Tokens Validator
 
-Ensure that your design tokens are confirm to the [Design Tokens Standard](https://design-tokens.github.io/community-group/format/#introduction).
+Design tokens are becoming more commonplace as a tool to help provide a consistent way of managing design system attributes. 
 
-The standard is in place to ensure that the design tokens, used to express the design decisions for a design system, are written in a platform-agnostic way. This allows for writing design tokens that can be used across languages, platforms, and tools.
+As the number of tools that include design token support increases, so does the importance of ensuring that your design tokens adhere to the [Design Tokens Standard](https://design-tokens.github.io/community-group/format/#introduction).
+
+By having tokens that conform to this standard, you ensure that your tokens will be interoperable across a suite of different design system management platforms, like Anima.
 
 ## Getting Started
 
@@ -16,8 +18,8 @@ If you want to run this locally then follow the installation instructions
 
 - [ ] Validate JSON file
 - [x] Base validation for every token
-- [ ] color validation
-- [ ] dimension validation
+- [x] color validation
+- [x] dimension validation
 - [ ] font family validation
 - [ ] font weight validation
 - [ ] duration validation
@@ -38,6 +40,7 @@ If you want to run this locally then follow the installation instructions
 - [ ] Handle resolution of local design token file
 - [ ] Handle external resolution of a design token file
 - [ ] Handle inline local design token file
+- [ ] Include link to relevant location in the design system spec
 
 
 ### Future ideas

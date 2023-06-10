@@ -1,6 +1,5 @@
-import { describe, it, expect } from "vitest";
 import { getTokenType } from "./getTokenType.js";
-import { Token, TokenValue } from "../types.js";
+import { TokenValue } from "../types.js";
 
 const context = {
   messages: [],
