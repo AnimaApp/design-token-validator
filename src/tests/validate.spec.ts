@@ -1,5 +1,5 @@
-import { validate } from "./validate.js";
-import { Tokens } from "./types.js";
+import { validate } from "../validate.js";
+import { Tokens } from "../types.js";
 
 describe("validate", () => {
   it("returns an empty array if design tokens are valid", () => {

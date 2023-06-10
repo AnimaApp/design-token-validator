@@ -1,4 +1,4 @@
-import { validateDimension } from "./dimension.js";
+import { validateDimension } from "../dimension.js";
 
 const context = {
   messages: [],

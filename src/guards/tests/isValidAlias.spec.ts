@@ -1,4 +1,4 @@
-import { isValidAlias } from "./isValidAlias.js";
+import { isValidAlias } from "../isValidAlias.js";
 
 describe("isValidAlias", () => {
   it("returns true if value is a valid alias", () => {

@@ -1,5 +1,4 @@
-import { WeightAlias } from "../types.js";
-import { validateFontWeight } from "./fontWeight.js";
+import { validateFontWeight } from "../fontWeight.js";
 
 const context = {
   messages: [],

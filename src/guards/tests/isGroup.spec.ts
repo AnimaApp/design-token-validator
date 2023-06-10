@@ -1,5 +1,5 @@
-import { isGroup } from "./isGroup.js";
-import { Token, TokenGroup } from "../types.js";
+import { isGroup } from "../isGroup.js";
+import { Token, TokenGroup } from "../../types.js";
 
 describe("isGroup", () => {
   it("returns true if token is a group", () => {

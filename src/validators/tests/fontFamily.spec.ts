@@ -1,4 +1,4 @@
-import { validateFontFamily } from "./fontFamily.js";
+import { validateFontFamily } from "../fontFamily.js";
 
 const context = {
   messages: [],

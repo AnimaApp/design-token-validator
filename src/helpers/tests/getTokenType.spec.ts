@@ -1,5 +1,5 @@
-import { getTokenType } from "./getTokenType.js";
-import { TokenValue } from "../types.js";
+import { getTokenType } from "../getTokenType.js";
+import { TokenValue } from "../../types.js";
 
 const context = {
   messages: [],

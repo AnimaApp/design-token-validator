@@ -1,4 +1,4 @@
-import { walk } from "./walk.js";
+import { walk } from "../walk.js";
 
 describe("walk", () => {
   it("visits the correct nodes", () => {

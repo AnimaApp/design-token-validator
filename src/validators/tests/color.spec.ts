@@ -1,4 +1,4 @@
-import { validateColor } from "./color.js";
+import { validateColor } from "../color.js";
 
 const context = {
   messages: [],

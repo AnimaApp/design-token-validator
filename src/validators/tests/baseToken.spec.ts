@@ -1,5 +1,5 @@
-import { validateBaseToken } from "./baseToken.js";
-import { Token } from "../types.js";
+import { validateBaseToken } from "../baseToken.js";
+import { Token } from "../../types.js";
 
 const context = {
   tokens: {},
