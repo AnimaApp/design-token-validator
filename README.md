@@ -15,9 +15,7 @@ If you want to run this locally then follow the installation instructions
 ### Validation
 
 - [ ] Validate JSON file
-- [ ] Base validation for every token
-- [ ] group validation
-- [ ] alias validation
+- [x] Base validation for every token
 - [ ] color validation
 - [ ] dimension validation
 - [ ] font family validation
@@ -31,6 +29,8 @@ If you want to run this locally then follow the installation instructions
 - [ ] shadow validation
 - [ ] gradient validation
 - [ ] typography validtion
+- [ ] group validation
+- [ ] alias validation
 
 
 ### Features

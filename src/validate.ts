@@ -16,7 +16,7 @@ export const validate = (tokens: Tokens): Results => {
   const visitorFunctions: VisitorFunctions = {
     group: () => {},
     token: (token) => {
-      validateBaseToken(token, context);
+      validateBaseToken(token, context);      
     },
   };
 
