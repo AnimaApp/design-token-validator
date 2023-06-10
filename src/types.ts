@@ -1,4 +1,8 @@
-import { weightAliases } from "./constants.js";
+import {
+  lineCapValues,
+  strokeStyleValues,
+  weightAliases,
+} from "./constants.js";
 
 export type Type =
   | "color"
@@ -22,6 +26,15 @@ export type Token = {
 };
 
 export type WeightAlias = (typeof weightAliases)[number];
+
+export type StrokeStyleValue = (typeof strokeStyleValues)[number];
+
+type LineCapValue = (typeof lineCapValues)[number];
+
+type StrokeStyleObjectValue = {
+  dashArray: DimensionToken["$value"][];
+  lineCap: LineCapValue;
+};
 
 type ColorToken = {
   $value: string;
@@ -58,6 +71,11 @@ type NumberToken = {
   $type: "number";
 };
 
+type StrokeStyleToken = {
+  $value: StrokeStyleValue | StrokeStyleObjectValue;
+  $type: "strokeStyle";
+};
+
 type BasicToken = {
   $value: string;
   $type: Type | undefined;
@@ -71,6 +89,7 @@ export type TokenValue =
   | DurationToken
   | CubicBezierToken
   | NumberToken
+  | StrokeStyleToken
   | BasicToken;
 
 export type TokenGroup = {

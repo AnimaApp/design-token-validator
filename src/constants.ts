@@ -18,3 +18,16 @@ export const weightAliases = [
   "extra-black",
   "ultra-black",
 ] as const;
+
+export const strokeStyleValues = [
+  "solid",
+  "dashed",
+  "dotted",
+  "double",
+  "groove",
+  "ridge",
+  "inset",
+  "outset",
+] as const;
+
+export const lineCapValues = ["butt", "round", "square"] as const;

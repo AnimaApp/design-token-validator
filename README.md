@@ -24,7 +24,7 @@ If you want to run this locally then follow the installation instructions
 - [x] duration validation
 - [x] cubic bezier validation
 - [x] number validation
-- [ ] stroke style validation
+- [x] stroke style validation
 - [ ] border validation
 - [ ] transition validation
 - [ ] shadow validation
@@ -38,12 +38,12 @@ If you want to run this locally then follow the installation instructions
 - [ ] Handle resolution of local design token file
 - [ ] Validate JSON file
 - [ ] Handle external resolution of a design token file
-- [ ] Handle inline local design token file
 - [ ] Include link to relevant location in the design system spec
 
 ### Improvements
 
 - [ ] Move messages over to the messages object. Use string interpolation to add the useful information to the message
+- [ ] Don't return early when the validator finds an error, as we can spot many errors in one pass
 
 ### Future ideas
 

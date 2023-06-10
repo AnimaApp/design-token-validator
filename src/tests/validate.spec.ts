@@ -32,6 +32,13 @@ describe("validate", () => {
         $value: 10000,
         $type: "number",
       },
+      "stroke style token": {
+        $value: {
+          dashArray: ["100rem", "2rem"],
+          lineCap: "round",
+        },
+        $type: "strokeStyle",
+      },
     };
 
     const results = validate(tokens);
