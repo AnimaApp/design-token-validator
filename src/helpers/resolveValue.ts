@@ -1,15 +1,14 @@
-import { isValidAliasPath } from "../guards/isValidAliasPath.js";
-import { TokenValue, Type } from "../types.js";
+import { isValidAlias } from "../guards/isValidAlias.js";
+import { AliasToken, TokenValue, Type } from "../types.js";
 import { Context } from "../validate.js";
 import { getAliasToken } from "./getAliasValue.js";
 
 export const resolveValue = (
-  token: TokenValue,
+  token: TokenValue | AliasToken,
   context: Context
 ): TokenValue | undefined => {
-  const value = token.$value;
-
-  if (isValidAliasPath(value)) {
+  if (isValidAlias(token)) {
+    const value = token.$value;
     const aliasToken = getAliasToken(value, context);
 
     if (!aliasToken) {
@@ -17,7 +16,10 @@ export const resolveValue = (
       return;
     }
 
-    // TODO: handle multiple aliases
+    if (isValidAlias(aliasToken)) {
+      return resolveValue(aliasToken, context);
+    }
+
     return aliasToken;
   }
 

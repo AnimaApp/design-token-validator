@@ -25,14 +25,14 @@ export type Type =
   | "gradient"
   | "typography";
 
-export type Tokens = TokenGroup | TokenValue;
+export type Tokens = TokenGroup | TokenValue | AliasToken;
 
 export type Token = {
-  [key: string]: TokenValue;
+  [key: string]: TokenValue | AliasToken;
 };
 
 export type TokenGroup = {
-  [key: string]: TokenValue | TokenGroup;
+  [key: string]: TokenValue | TokenGroup | AliasToken;
 };
 
 export type WeightAlias = (typeof weightAliases)[number];
@@ -136,7 +136,7 @@ type TypographyToken = {
   $type: "typography";
 };
 
-type AliasToken = {
+export type AliasToken = {
   $value: string;
 };
 

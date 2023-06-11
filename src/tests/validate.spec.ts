@@ -36,6 +36,9 @@ describe("validate", () => {
       "alias token": {
         $value: "{number token}",
       },
+      "double alias": {
+        $value: "{alias token}",
+      },
       "stroke style token": {
         $value: {
           dashArray: ["100rem", "2rem"],
