@@ -4,6 +4,12 @@ import {
   weightAliases,
 } from "./constants.js";
 
+/* Utility Types */
+
+export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+
+/* Design Token Types */
+
 export type Type =
   | "color"
   | "dimension"
@@ -39,7 +45,7 @@ type StrokeStyleObjectValue = {
 type GradientStopValue = {
   color: ColorToken["$value"];
   position: number;
-}
+};
 
 type ColorToken = {
   $value: string;
@@ -84,7 +90,7 @@ type StrokeStyleToken = {
 type BorderToken = {
   $value: {
     color: ColorToken["$value"];
-  width: DimensionToken["$value"];
+    width: DimensionToken["$value"];
     style: StrokeStyleToken["$value"];
   };
   $type: "border";
@@ -113,11 +119,17 @@ type ShadowToken = {
 type GradientToken = {
   $value: GradientStopValue[];
   $type: "gradient";
-}
+};
 
-type BasicToken = {
-  $value: string;
-  $type: Type | undefined;
+type TypographyToken = {
+  $value: {
+    fontFamily: FontFamilyToken["$value"];
+    fontSize: DimensionToken["$value"];
+    fontWeight: FontWeightToken["$value"];
+    letterSpacing: DimensionToken["$value"];
+    lineHeight: NumberToken["$value"];
+  };
+  $type: "typography";
 };
 
 export type TokenValue =
@@ -133,7 +145,7 @@ export type TokenValue =
   | TransitionToken
   | ShadowToken
   | GradientToken
-  | BasicToken;
+  | TypographyToken;
 
 export type TokenGroup = {
   [key: string]: TokenValue | TokenGroup;

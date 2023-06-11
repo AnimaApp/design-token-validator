@@ -29,7 +29,7 @@ describe("walk", () => {
           },
           "nested group": {
             "Token cuatro": {
-              $value: "strong",
+              $value: "bold",
               $type: "fontWeight",
             },
           },

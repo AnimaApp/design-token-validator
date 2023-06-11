@@ -15,7 +15,7 @@ describe("isGroup", () => {
             $type: "fontFamily",
           },
           "Token cuatro": {
-            $value: "strong",
+            $value: "bold",
             $type: "fontWeight",
           },
         },

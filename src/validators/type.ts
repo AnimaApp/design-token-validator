@@ -12,42 +12,29 @@ import { validateNumber } from "./number.js";
 import { validateShadow } from "./shadow.js";
 import { validateStrokeStyle } from "./strokeStyle.js";
 import { validateTransition } from "./transition.js";
+import { validateTypography } from "./typography.js";
 
 export type TokenValidator<T extends Type> = (
   value: Extract<TokenValue, { $type: T }>["$value"],
   context: Context
 ) => boolean;
 
-/* 
-  The typeValidators doesn't narrow the types down for the specific token type
-  Which is why I'm adding @ts-expect-error here
+type TokenValidators<T extends Type> = {
+  [K in T]: TokenValidator<K>;
+};
 
-  We can remove these once we can get TS to narrow correctly
-*/
-export const typeValidators: Record<Type, TokenValidator<Type>> = {
-  // @ts-expect-error
+export const typeValidators: TokenValidators<Type> = {
   border: validateBorder,
-  // @ts-expect-error
   color: validateColor,
-  // @ts-expect-error
   cubicBezier: validateCubicBezier,
-  // @ts-expect-error
   dimension: validateDimension,
-  // @ts-expect-error
   duration: validateDuration,
-  // @ts-expect-error
   fontFamily: validateFontFamily,
-  // @ts-expect-error
   fontWeight: validateFontWeight,
-  // @ts-expect-error
   gradient: validateGradient,
-  // @ts-expect-error
   number: validateNumber,
-  // @ts-expect-error
   shadow: validateShadow,
-  // @ts-expect-error
   strokeStyle: validateStrokeStyle,
-  // @ts-expect-error
   transition: validateTransition,
-  typography: () => false,
+  typography: validateTypography,
 };

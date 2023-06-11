@@ -1,11 +1,13 @@
 import { isValidAlias } from "../guards/isValidAlias.js";
-import { TokenValue, Type } from "../types.js";
+import { Optional, TokenValue, Type } from "../types.js";
 import { Context } from "../validate.js";
 import { getAliasToken } from "./getAliasValue.js";
 import { getClosestGroupType } from "./getClosestGroupType.js";
 
+type TokenValueBeforeTypeResolution = Optional<TokenValue, "$type">;
+
 export const getTokenType = (
-  token: TokenValue,
+  token: TokenValueBeforeTypeResolution,
   context: Context
 ): Type | undefined => {
   if (token.$type) {
