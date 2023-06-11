@@ -79,7 +79,7 @@ type StrokeStyleToken = {
 type BorderToken = {
   $value: {
     color: ColorToken["$value"];
-    width: DimensionToken["$value"];
+  width: DimensionToken["$value"];
     style: StrokeStyleToken["$value"];
   };
   $type: "border";
@@ -92,6 +92,17 @@ type TransitionToken = {
     timingFunction: CubicBezierToken["$value"];
   };
   $type: "transition";
+};
+
+type ShadowToken = {
+  $value: {
+    color: ColorToken["$value"];
+    offsetX: DimensionToken["$value"];
+    offsetY: DimensionToken["$value"];
+    blur: DimensionToken["$value"];
+    spread: DimensionToken["$value"];
+  };
+  $type: "shadow";
 };
 
 type BasicToken = {
@@ -110,6 +121,7 @@ export type TokenValue =
   | StrokeStyleToken
   | BorderToken
   | TransitionToken
+  | ShadowToken
   | BasicToken;
 
 export type TokenGroup = {

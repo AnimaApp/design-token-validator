@@ -55,6 +55,16 @@ describe("validate", () => {
         },
         $type: "transition",
       },
+      "shadow token": {
+        $value: {
+          color: '#ff00ddaa',
+          offsetX: '10px',
+          offsetY: '10px',
+          blur: '10px',
+          spread: '10px',
+        },
+        $type: "shadow",
+      },
     };
 
     const results = validate(tokens);

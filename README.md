@@ -27,7 +27,7 @@ If you want to run this locally then follow the installation instructions
 - [x] stroke style validation
 - [x] border validation
 - [x] transition validation
-- [ ] shadow validation
+- [x] shadow validation
 - [ ] gradient validation
 - [ ] typography validtion
 - [ ] group validation
