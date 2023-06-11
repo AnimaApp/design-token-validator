@@ -31,7 +31,7 @@ If you want to run this locally then follow the installation instructions
 - [x] gradient validation
 - [x] typography validtion
 - [ ] group validation
-- [ ] alias validation
+- [x] resolve aliases
 
 ### Features
 

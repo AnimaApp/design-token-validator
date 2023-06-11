@@ -31,6 +31,10 @@ export type Token = {
   [key: string]: TokenValue;
 };
 
+export type TokenGroup = {
+  [key: string]: TokenValue | TokenGroup;
+};
+
 export type WeightAlias = (typeof weightAliases)[number];
 
 export type StrokeStyleValue = (typeof strokeStyleValues)[number];
@@ -146,10 +150,6 @@ export type TokenValue =
   | ShadowToken
   | GradientToken
   | TypographyToken;
-
-export type TokenGroup = {
-  [key: string]: TokenValue | TokenGroup;
-};
 
 interface Result {
   message: string;

@@ -1,4 +1,4 @@
-import { isValidAlias } from "../guards/isValidAlias.js";
+import { isValidAliasPath } from "../guards/isValidAliasPath.js";
 import { Optional, TokenValue, Type } from "../types.js";
 import { Context } from "../validate.js";
 import { getAliasToken } from "./getAliasValue.js";
@@ -16,11 +16,17 @@ export const getTokenType = (
 
   const value = token.$value;
 
-  if (isValidAlias(value)) {
-    // TODO: implement this
+  if (isValidAliasPath(value)) {
     const aliasToken = getAliasToken(value, context);
 
-    return aliasToken.$type as Type;
+    if (!aliasToken) {
+      context.messages.push({ message: 'Alias path does not exist'})
+      return;
+    }
+
+    if (aliasToken.$type) {
+      return aliasToken.$type as Type;
+    }
   }
 
   // TODO: implement this

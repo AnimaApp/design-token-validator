@@ -2,7 +2,7 @@ import { TokenValue } from "../types.js";
 
 const validAliasRegex = /^\{.*\}$/;
 
-export const isValidAlias = (value: TokenValue["$value"]) => {
+export const isValidAliasPath = (value: TokenValue["$value"]): value is string => {
   if (typeof value !== "string") {
     return false;
   }
