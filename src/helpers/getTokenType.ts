@@ -1,21 +1,18 @@
-import { isValidAlias } from "../guards/isValidAlias.js";
-import { Optional, TokenValue, Type } from "../types.js";
+import { TokenValueBeforeTypeResolution, Type } from "../types.js";
 import { Context } from "../validate.js";
-import { getAliasToken } from "./getAliasValue.js";
+import { GroupPath } from "../walk.js";
 import { getClosestGroupType } from "./getClosestGroupType.js";
-
-type TokenValueBeforeTypeResolution = Optional<TokenValue, "$type">;
 
 export const getTokenType = (
   token: TokenValueBeforeTypeResolution,
-  context: Context
+  context: Context,
+  path: GroupPath[] = []
 ): Type | undefined => {
   if (token.$type) {
     return token.$type;
   }
 
-  // TODO: resolve type from group
-  const closestGroupType = getClosestGroupType(token, context);
+  const closestGroupType = getClosestGroupType(path, context);
 
   if (closestGroupType) {
     return closestGroupType as Type;

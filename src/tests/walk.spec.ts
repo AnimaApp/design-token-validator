@@ -1,4 +1,4 @@
-import { walk } from "../walk.js";
+import { VisitorFunctions, walk } from "../walk.js";
 
 describe("walk", () => {
   it("visits the correct nodes", () => {
@@ -7,7 +7,7 @@ describe("walk", () => {
       groupCount: 0,
     };
 
-    const visitorFunctions = {
+    const visitorFunctions: VisitorFunctions = {
       token: () => {
         res.tokenCount++;
       },
@@ -45,5 +45,47 @@ describe("walk", () => {
 
     expect(res.tokenCount).toBe(4);
     expect(res.groupCount).toBe(3);
+  });
+
+  it("correctly calculates the path", () => {
+    let path: any[] = [];
+
+    const visitorFunctions: VisitorFunctions = {
+      group: (_, updatedPath) => {
+        path = [...updatedPath];
+      },
+      token: (_, updatedPath) => {
+        path = [...updatedPath];
+      },
+    };
+
+    const tokens: any = {
+      "token group": {
+        token: {
+          $value: "2rem",
+          $type: "dimension",
+        },
+        "token group two": {
+          $type: "fontFamily",
+          "token tres": {
+            $value: "Helvetica",
+          },
+          "nested group": {
+            "Token cuatro": {
+              $value: "bold",
+              $type: "fontWeight",
+            },
+          },
+        },
+      },
+    };
+
+    walk(tokens, visitorFunctions);
+
+    expect(path).toEqual([
+      { name: "token group" },
+      { name: "token group two", type: "fontFamily" },
+      { name: "nested group" },
+    ]);
   });
 });

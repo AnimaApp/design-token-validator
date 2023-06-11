@@ -31,6 +31,8 @@ export type Token = {
   [key: string]: TokenValue | AliasToken;
 };
 
+export type TokenValueBeforeTypeResolution = Optional<TokenValue, "$type">;
+
 export type TokenGroup = {
   $type?: string;
   [key: string]: string | TokenValue | TokenGroup | AliasToken | undefined;

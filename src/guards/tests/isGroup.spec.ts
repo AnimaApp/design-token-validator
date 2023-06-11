@@ -35,4 +35,34 @@ describe("isGroup", () => {
 
     expect(isGroup(token)).toBe(false);
   });
+
+  it("returns true if token is a group with a type", () => {
+    const tokenGroup: TokenGroup = {
+      "token group": {
+        $type: "border",
+        token: {
+          $value: "2rem",
+          $type: "dimension",
+        },
+      },
+    };
+
+    expect(isGroup(tokenGroup)).toBe(true);
+  });
+
+  it("returns false for empty groups", () => {
+    const tokenGroup: TokenGroup = {
+      "token group": {},
+    };
+
+    expect(isGroup(tokenGroup)).toBe(false);
+
+    const tokenGroup2: TokenGroup = {
+      "token group": {
+        $type: "border",
+      },
+    };
+
+    expect(isGroup(tokenGroup2)).toBe(false);
+  });
 });

@@ -20,7 +20,7 @@ export const validate = (tokens: Tokens): Results => {
     group: () => {
       // Is there any validation we need to do here?
     },
-    token: (token) => {
+    token: (token, path) => {
       validateBaseToken(token, context);
 
       const tokenValueOrAlias = Object.values(token)[0];
@@ -33,7 +33,7 @@ export const validate = (tokens: Tokens): Results => {
         return;
       }
 
-      const type = getTokenType(tokenValue, context);
+      const type = getTokenType(tokenValue, context, path);
 
       const { $value } = tokenValue;
 

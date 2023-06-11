@@ -22,6 +22,7 @@ describe("getTokenType", () => {
     };
 
     expect(getTokenType(token, context)).toBeUndefined;
-    expect(context.messages.length).toBe(1);
+
+    expect(context.messages.length).toBe(2);
   });
 });

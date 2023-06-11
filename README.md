@@ -14,26 +14,7 @@ If you want to run this locally then follow the installation instructions
 
 ## TODO
 
-### Validation
-
-- [x] Base validation for every token
-- [x] color validation
-- [x] dimension validation
-- [x] font family validation
-- [x] font weight validation
-- [x] duration validation
-- [x] cubic bezier validation
-- [x] number validation
-- [x] stroke style validation
-- [x] border validation
-- [x] transition validation
-- [x] shadow validation
-- [x] gradient validation
-- [x] typography validtion
-- [x] resolve aliases
-- [ ] group validation
-
-### Features
+### Additional Features
 
 - [ ] Handle resolution of local design token file
 - [ ] Validate JSON file

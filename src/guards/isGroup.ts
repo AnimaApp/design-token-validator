@@ -3,7 +3,11 @@ import { Token, TokenGroup, TokenValue, Tokens } from "../types.js";
 export const isGroup = (tokens: Tokens): tokens is TokenGroup => {
   const value = Object.values(tokens)[0];
 
-  if (value.hasOwnProperty("$value") || value.hasOwnProperty("$type")) {
+  const keys = Object.keys(value).filter((key) => {
+    return !key.startsWith("$");
+  });
+
+  if (keys.length === 0) {
     return false;
   }
 
