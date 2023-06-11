@@ -1,4 +1,4 @@
-import { isTokenValue } from "../guards/isGroup.js";
+import { isGroup, isTokenValue } from "../guards/isGroup.js";
 import { TokenGroup, TokenValue, Tokens } from "../types.js";
 import { Context } from "../validate.js";
 import { splitAliasPath } from "./splitAliasPath.js";
@@ -54,7 +54,8 @@ const getValueByPath = (
 
   const currentValue = tokens[currentPath];
 
-  if (!currentValue) {
+  // TODO ignore any any properties that begin with "$"
+  if (!currentValue || typeof currentValue === "string") {
     return;
   }
 

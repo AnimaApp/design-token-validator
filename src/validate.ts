@@ -18,7 +18,7 @@ export const validate = (tokens: Tokens): Results => {
 
   const visitorFunctions: VisitorFunctions = {
     group: () => {
-      // TODO: validate group
+      // Is there any validation we need to do here?
     },
     token: (token) => {
       validateBaseToken(token, context);
@@ -28,7 +28,9 @@ export const validate = (tokens: Tokens): Results => {
       const tokenValue = resolveValue(tokenValueOrAlias, context);
 
       if (!tokenValue) {
-        return; // TODO handle this scenario
+        context.messages.push({ message: "Token value does not exist" });
+
+        return;
       }
 
       const type = getTokenType(tokenValue, context);

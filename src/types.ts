@@ -32,7 +32,8 @@ export type Token = {
 };
 
 export type TokenGroup = {
-  [key: string]: TokenValue | TokenGroup | AliasToken;
+  $type?: string;
+  [key: string]: string | TokenValue | TokenGroup | AliasToken | undefined;
 };
 
 export type WeightAlias = (typeof weightAliases)[number];

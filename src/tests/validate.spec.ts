@@ -32,7 +32,6 @@ describe("validate", () => {
         $value: 10000,
         $type: "number",
       },
-      // TODO: handle alias type
       "alias token": {
         $value: "{number token}",
       },
@@ -90,6 +89,12 @@ describe("validate", () => {
           letterSpacing: "2rem",
         },
         $type: "typography",
+      },
+      group: {
+        "color token": {
+          $value: "#fff000",
+          $type: "color",
+        },
       },
     };
 
