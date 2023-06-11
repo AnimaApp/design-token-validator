@@ -28,7 +28,7 @@ If you want to run this locally then follow the installation instructions
 - [x] border validation
 - [x] transition validation
 - [x] shadow validation
-- [ ] gradient validation
+- [x] gradient validation
 - [ ] typography validtion
 - [ ] group validation
 - [ ] alias validation
@@ -39,6 +39,7 @@ If you want to run this locally then follow the installation instructions
 - [ ] Validate JSON file
 - [ ] Handle external resolution of a design token file
 - [ ] Include link to relevant location in the design system spec
+- [ ] Add severity to messages (ERROR + WARN)
 
 ### Improvements
 

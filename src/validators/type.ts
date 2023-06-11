@@ -7,6 +7,7 @@ import { validateDimension } from "./dimension.js";
 import { validateDuration } from "./duration.js";
 import { validateFontFamily } from "./fontFamily.js";
 import { validateFontWeight } from "./fontWeight.js";
+import { validateGradient } from "./gradient.js";
 import { validateNumber } from "./number.js";
 import { validateShadow } from "./shadow.js";
 import { validateStrokeStyle } from "./strokeStyle.js";
@@ -38,7 +39,8 @@ export const typeValidators: Record<Type, TokenValidator<Type>> = {
   fontFamily: validateFontFamily,
   // @ts-expect-error
   fontWeight: validateFontWeight,
-  gradient: () => false,
+  // @ts-expect-error
+  gradient: validateGradient,
   // @ts-expect-error
   number: validateNumber,
   // @ts-expect-error

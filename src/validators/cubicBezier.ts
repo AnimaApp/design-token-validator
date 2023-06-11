@@ -1,3 +1,4 @@
+import { isBetween0And1 } from "../guards/isBetween0And1.js";
 import { TokenValidator } from "./type.js";
 
 export const validateCubicBezier: TokenValidator<"cubicBezier"> = (
@@ -28,7 +29,9 @@ export const validateCubicBezier: TokenValidator<"cubicBezier"> = (
     return false;
   }
 
-  if (value[0] < 0 || value[0] > 1) {
+
+
+  if (!isBetween0And1(value[0])) {
     context.messages.push({
       message: `Token value[0] must be a number between 0 and 1`,
     });
@@ -36,7 +39,7 @@ export const validateCubicBezier: TokenValidator<"cubicBezier"> = (
     return false;
   }
 
-  if (value[2] < 0 || value[2] > 1) {
+  if (!isBetween0And1(value[2])) {
     context.messages.push({
       message: `Token value[2] must be a number between 0 and 1`,
     });

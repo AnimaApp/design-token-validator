@@ -36,6 +36,11 @@ type StrokeStyleObjectValue = {
   lineCap: LineCapValue;
 };
 
+type GradientStopValue = {
+  color: ColorToken["$value"];
+  position: number;
+}
+
 type ColorToken = {
   $value: string;
   $type: "color";
@@ -105,6 +110,11 @@ type ShadowToken = {
   $type: "shadow";
 };
 
+type GradientToken = {
+  $value: GradientStopValue[];
+  $type: "gradient";
+}
+
 type BasicToken = {
   $value: string;
   $type: Type | undefined;
@@ -122,6 +132,7 @@ export type TokenValue =
   | BorderToken
   | TransitionToken
   | ShadowToken
+  | GradientToken
   | BasicToken;
 
 export type TokenGroup = {

@@ -57,13 +57,22 @@ describe("validate", () => {
       },
       "shadow token": {
         $value: {
-          color: '#ff00ddaa',
-          offsetX: '10px',
-          offsetY: '10px',
-          blur: '10px',
-          spread: '10px',
+          color: "#ff00ddaa",
+          offsetX: "10px",
+          offsetY: "10px",
+          blur: "10px",
+          spread: "10px",
         },
         $type: "shadow",
+      },
+      "gradient token": {
+        $value: [
+          {
+            color: "#fff000",
+            position: 0,
+          },
+        ],
+        $type: "gradient",
       },
     };
 
