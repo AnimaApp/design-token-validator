@@ -12,6 +12,10 @@ If you want to validate your tokens online, try out our free online tool: ...
 
 If you want to run this locally then follow the installation instructions
 
+## Automate your entire design system workflow
+
+<!-- Add details about how Anima can solve this for you -->
+
 ## TODO
 
 ### Additional Features

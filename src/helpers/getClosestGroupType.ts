@@ -1,4 +1,3 @@
-import { TokenValueBeforeTypeResolution, Tokens } from "../types.js";
 import { Context } from "../validate.js";
 import { GroupPath } from "../walk.js";
 

@@ -1,4 +1,3 @@
-import { isBetween0And1 } from "../guards/isBetween0And1.js";
 import { validateColor } from "./color.js";
 import { TokenValidator } from "./type.js";
 

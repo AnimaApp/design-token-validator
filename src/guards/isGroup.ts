@@ -1,4 +1,4 @@
-import { Token, TokenGroup, TokenValue, Tokens } from "../types.js";
+import { TokenGroup, TokenValue, Tokens } from "../types.js";
 
 export const isGroup = (tokens: Tokens): tokens is TokenGroup => {
   const value = Object.values(tokens)[0];

@@ -1,5 +1,5 @@
 import { isValidAlias } from "../guards/isValidAlias.js";
-import { AliasToken, TokenValue, Type } from "../types.js";
+import { AliasToken, TokenValue } from "../types.js";
 import { Context } from "../validate.js";
 import { getAliasToken } from "./getAliasValue.js";
 
