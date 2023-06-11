@@ -1,4 +1,5 @@
 import { getTokenType } from "./helpers/getTokenType.js";
+import { resolveValue } from "./helpers/resolveValue.js";
 import { Results, Tokens } from "./types.js";
 import { validateBaseToken } from "./validators/baseToken.js";
 import { TokenValidator, typeValidators } from "./validators/type.js";
@@ -22,8 +23,16 @@ export const validate = (tokens: Tokens): Results => {
     token: (token) => {
       validateBaseToken(token, context);
 
-      const tokenValue = Object.values(token)[0];
+      const tokenValueOrAlias = Object.values(token)[0];
+
+      const tokenValue = resolveValue(tokenValueOrAlias, context);
+
+      if (!tokenValue) {
+        return; // TODO handle this scenario
+      }
+
       const type = getTokenType(tokenValue, context);
+
       const { $value } = tokenValue;
 
       if (type && $value) {

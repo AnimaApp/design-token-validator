@@ -30,8 +30,8 @@ If you want to run this locally then follow the installation instructions
 - [x] shadow validation
 - [x] gradient validation
 - [x] typography validtion
-- [ ] group validation
 - [x] resolve aliases
+- [ ] group validation
 
 ### Features
 

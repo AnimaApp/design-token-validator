@@ -32,6 +32,10 @@ describe("validate", () => {
         $value: 10000,
         $type: "number",
       },
+      // TODO: handle alias type
+      "alias token": {
+        $value: "{number token}",
+      },
       "stroke style token": {
         $value: {
           dashArray: ["100rem", "2rem"],

@@ -14,22 +14,7 @@ export const getTokenType = (
     return token.$type;
   }
 
-  const value = token.$value;
-
-  if (isValidAliasPath(value)) {
-    const aliasToken = getAliasToken(value, context);
-
-    if (!aliasToken) {
-      context.messages.push({ message: 'Alias path does not exist'})
-      return;
-    }
-
-    if (aliasToken.$type) {
-      return aliasToken.$type as Type;
-    }
-  }
-
-  // TODO: implement this
+  // TODO: resolve type from group
   const closestGroupType = getClosestGroupType(token, context);
 
   if (closestGroupType) {

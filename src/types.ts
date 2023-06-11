@@ -136,6 +136,10 @@ type TypographyToken = {
   $type: "typography";
 };
 
+type AliasToken = {
+  $value: string;
+};
+
 export type TokenValue =
   | ColorToken
   | DimensionToken
