@@ -74,6 +74,16 @@ describe("validate", () => {
         ],
         $type: "gradient",
       },
+      "typography token": {
+        $value: {
+          fontFamily: ["Helvetica", "Arial", "sans-serif"],
+          fontWeight: 400,
+          fontSize: "2rem",
+          lineHeight: 2,
+          letterSpacing: "2rem",
+        },
+        $type: "typography",
+      },
     };
 
     const results = validate(tokens);

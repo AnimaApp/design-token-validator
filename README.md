@@ -29,7 +29,7 @@ If you want to run this locally then follow the installation instructions
 - [x] transition validation
 - [x] shadow validation
 - [x] gradient validation
-- [ ] typography validtion
+- [x] typography validtion
 - [ ] group validation
 - [ ] alias validation
 
