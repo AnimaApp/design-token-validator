@@ -50,14 +50,4 @@ export const validateBaseToken = (token: Token, context: Context) => {
       message: "Token must have a value",
     });
   }
-
-  // type
-  // - resolve type from the $type property
-  // - if value is a reference, resolve the type from the correct value
-  // - if value has a parent group with type, then resolve the type
-  // - type must be a string
-  // - error
-
-  // alias
-  // - must resolve to
 };

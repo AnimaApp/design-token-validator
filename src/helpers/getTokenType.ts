@@ -1,22 +1,23 @@
 import { TokenValueBeforeTypeResolution, Type } from "../types.js";
 import { Context } from "../validate.js";
-import { GroupPath } from "../walk.js";
 import { getClosestGroupType } from "./getClosestGroupType.js";
 
 export const getTokenType = (
   token: TokenValueBeforeTypeResolution,
-  context: Context,
-  path: GroupPath[] = []
+  context: Context
 ): Type | undefined => {
   if (token.$type) {
     return token.$type;
   }
 
-  const closestGroupType = getClosestGroupType(path, context);
+  const closestGroupType = getClosestGroupType(context);
 
   if (closestGroupType) {
     return closestGroupType as Type;
   }
 
-  context.messages.push({ message: "Token does not have a type" });
+  context.report({
+    messageId: "token-does-not-have-type",
+    args: [context.tokenPath],
+  });
 };

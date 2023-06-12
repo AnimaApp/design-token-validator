@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateDuration } from "../duration.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("duration", () => {
   beforeEach(() => {

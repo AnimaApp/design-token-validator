@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateDimension } from "../dimension.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("dimensionValidator", () => {
   beforeEach(() => {

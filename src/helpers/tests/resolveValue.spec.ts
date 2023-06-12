@@ -1,20 +1,20 @@
+import { getTestContext } from "../../testUtils.js";
 import { resolveValue } from "../resolveValue.js";
 
-const context = {
-  messages: [],
-  tokens: {
-    "white": {
-      $type: "color",
-      $value: "#ffffff",
-    },
-    "white alias": {
-      $value: "{white}",
-    },
-    "double white alias": {
-      $value: "{white alias}",
-    }
+const tokens = {
+  white: {
+    $type: "color",
+    $value: "#ffffff",
+  },
+  "white alias": {
+    $value: "{white}",
+  },
+  "double white alias": {
+    $value: "{white alias}",
   },
 };
+
+const context = getTestContext({ tokens });
 
 describe("resolveValue", () => {
   beforeEach(() => {
@@ -53,5 +53,14 @@ describe("resolveValue", () => {
       $type: "color",
       $value: "#ffffff",
     });
+  });
+
+  it("appends error if alias path does not resolve to a token", () => {
+    const token = {
+      $value: "{double black alias}",
+    };
+
+    expect(resolveValue(token, context)).toBeUndefined();
+    expect(context.messages.length).toBe(1);
   });
 });

@@ -11,30 +11,18 @@ export const validateTransition: TokenValidator<"transition"> = (
   const isValidDelay = validateDuration(delay, context);
 
   if (!isValidDelay) {
-    context.messages.push({
-      message: `Token value must have a valid duration property`,
-    });
-
     return false;
   }
 
   const isValidDuration = validateDuration(duration, context);
 
   if (!isValidDuration) {
-    context.messages.push({
-      message: `Token value must have a valid duration property`,
-    });
-
     return false;
   }
 
   const isValidTimingFunction = validateCubicBezier(timingFunction, context);
 
   if (!isValidTimingFunction) {
-    context.messages.push({
-      message: `Token value must have a valid timingFunction property`,
-    });
-
     return false;
   }
 

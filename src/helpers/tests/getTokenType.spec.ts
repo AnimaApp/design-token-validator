@@ -1,10 +1,8 @@
 import { getTokenType } from "../getTokenType.js";
 import { TokenValue } from "../../types.js";
+import { getTestContext } from "../../testUtils.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("getTokenType", () => {
   it("returns a tokens type", () => {
@@ -23,6 +21,6 @@ describe("getTokenType", () => {
 
     expect(getTokenType(token, context)).toBeUndefined;
 
-    expect(context.messages.length).toBe(2);
+    expect(context.messages.length).toBe(1);
   });
 });

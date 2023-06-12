@@ -1,4 +1,5 @@
 import { validateColor } from "./color.js";
+import { validateNumber } from "./number.js";
 import { TokenValidator } from "./type.js";
 
 export const validateGradient: TokenValidator<"gradient"> = (
@@ -6,16 +7,18 @@ export const validateGradient: TokenValidator<"gradient"> = (
   context
 ) => {
   if (!Array.isArray(value)) {
-    context.messages.push({
-      message: `Token value must be an array of gradient stops`,
+    context.report({
+      messageId: "invalid-gradient-type",
+      args: [context.tokenPath],
     });
 
     return false;
   }
 
   if (value.length === 0) {
-    context.messages.push({
-      message: `Token value array does not contain any values`,
+    context.report({
+      messageId: "empty-gradient",
+      args: [context.tokenPath],
     });
 
     return false;
@@ -27,18 +30,12 @@ export const validateGradient: TokenValidator<"gradient"> = (
     const isValidColor = validateColor(color, context);
 
     if (!isValidColor) {
-      context.messages.push({
-        message: `Token value must be a valid color`,
-      });
-
       return false;
     }
 
-    if (typeof position !== "number") {
-      context.messages.push({
-        message: `Token value must be a valid number`,
-      });
+    const isValidNumber = validateNumber(position, context);
 
+    if (!isValidNumber) {
       return false;
     }
 

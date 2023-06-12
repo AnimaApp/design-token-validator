@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateGradient } from "../gradient.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("validateGradient", () => {
   beforeEach(() => {
@@ -48,6 +46,6 @@ describe("validateGradient", () => {
 
     expect(validateGradient(invalidNumber, context)).toBe(false);
 
-    expect(context.messages.length).toBe(4);
+    expect(context.messages.length).toBe(3);
   });
 });

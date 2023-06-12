@@ -6,42 +6,45 @@ export const validateCubicBezier: TokenValidator<"cubicBezier"> = (
   context
 ) => {
   if (!value) {
-    context.messages.push({
-      message: `Token value must be an array of 4 numbers`,
+    context.report({
+      messageId: "no-cubic-bezier",
+      args: [context.tokenPath],
     });
 
     return false;
   }
 
   if (value.length !== 4) {
-    context.messages.push({
-      message: `Token value must consist of 4 numbers`,
+    context.report({
+      messageId: "invalid-cubic-bezier-length",
+      args: [context.tokenPath],
     });
 
     return false;
   }
 
   if (value.some((v) => typeof v !== "number")) {
-    context.messages.push({
-      message: `Token value must be an array of 4 numbers`,
+    context.report({
+      messageId: "invalid-cubic-bezier-type",
+      args: [context.tokenPath],
     });
 
     return false;
   }
 
-
-
   if (!isBetween0And1(value[0])) {
-    context.messages.push({
-      message: `Token value[0] must be a number between 0 and 1`,
+    context.report({
+      messageId: "invalid-cubic-bezier-value",
+      args: [value[0], context.tokenPath],
     });
 
     return false;
   }
 
   if (!isBetween0And1(value[2])) {
-    context.messages.push({
-      message: `Token value[2] must be a number between 0 and 1`,
+    context.report({
+      messageId: "invalid-cubic-bezier-value",
+      args: [value[2], context.tokenPath],
     });
 
     return false;

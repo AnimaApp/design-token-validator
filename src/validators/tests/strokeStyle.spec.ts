@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateStrokeStyle } from "../strokeStyle.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("validateStrokeStyle", () => {
   beforeEach(() => {

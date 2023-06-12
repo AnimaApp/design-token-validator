@@ -12,7 +12,10 @@ export const resolveValue = (
     const aliasToken = getAliasToken(value, context);
 
     if (!aliasToken) {
-      context.messages.push({ message: "Alias path does not exist" });
+      context.report({
+        messageId: "token-not-found-for-path",
+        args: [context.tokenPath, value],
+      });
       return;
     }
 

@@ -1,9 +1,8 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateFontWeight } from "../fontWeight.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
+
 describe("validateFontWeight", () => {
   beforeEach(() => {
     context.messages = [];

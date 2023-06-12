@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateColor } from "../color.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("validateColor", () => {
   it("validates valid hex values", () => {

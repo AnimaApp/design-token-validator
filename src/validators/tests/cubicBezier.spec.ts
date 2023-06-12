@@ -1,8 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateCubicBezier } from "../cubicBezier.js";
-const context = {
-  messages: [],
-  tokens: {},
-};
+
+const context = getTestContext({});
 
 describe("validateCubicBezier", () => {
   it("validates valid cubicBezier values", () => {

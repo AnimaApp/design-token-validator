@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateTransition } from "../transition.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("validateTransition", () => {
   beforeEach(() => {
@@ -52,6 +50,6 @@ describe("validateTransition", () => {
     };
     expect(validateTransition(missingProperty, context)).toBe(false);
 
-    expect(context.messages.length).toBe(8);
+    expect(context.messages.length).toBe(4);
   });
 });

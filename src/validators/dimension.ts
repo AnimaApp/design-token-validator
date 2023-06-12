@@ -7,8 +7,9 @@ export const validateDimension: TokenValidator<"dimension"> = (
   context
 ) => {
   if (!dimensionRegex.test(value)) {
-    context.messages.push({
-      message: `Token value must be a valid dimension`,
+    context.report({
+      messageId: 'invalid-dimension',
+      args: [value, context.tokenPath],
     });
 
     return false;

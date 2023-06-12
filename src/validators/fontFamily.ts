@@ -10,8 +10,9 @@ export const validateFontFamily: TokenValidator<"fontFamily"> = (
 
   if (Array.isArray(value)) {
     if (value.length === 0) {
-      context.messages.push({
-        message: `Token value array does not contain any values`,
+      context.report({
+        messageId: "invalid-font-family",
+        args: [context.tokenPath],
       });
 
       return false;
@@ -24,8 +25,9 @@ export const validateFontFamily: TokenValidator<"fontFamily"> = (
     }
   }
 
-  context.messages.push({
-    message: `Token value must be a valid font family`,
+  context.report({
+    messageId: "invalid-font-family",
+    args: [context.tokenPath],
   });
 
   return false;

@@ -10,8 +10,9 @@ export const validateDuration: TokenValidator<"duration"> = (
     return true;
   }
 
-  context.messages.push({
-    message: `Token value must be an number followed by "ms"`,
+  context.report({
+    messageId: "invalid-duration",
+    args: [value, context.tokenPath],
   });
 
   return false;

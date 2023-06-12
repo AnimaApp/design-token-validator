@@ -10,16 +10,18 @@ export const validateStrokeStyle: TokenValidator<"strokeStyle"> = (
     const { dashArray, lineCap } = value;
 
     if (!dashArray) {
-      context.messages.push({
-        message: `Token value must be an object with a dashArray property`,
+      context.report({
+        messageId: "no-dash-array",
+        args: [context.tokenPath],
       });
 
       return false;
     }
 
     if (!Array.isArray(dashArray)) {
-      context.messages.push({
-        message: `dashArray must be an array of dimension values`,
+      context.report({
+        messageId: "invalid-dash-array",
+        args: [context.tokenPath],
       });
 
       return false;
@@ -34,16 +36,18 @@ export const validateStrokeStyle: TokenValidator<"strokeStyle"> = (
     }
 
     if (!lineCap || typeof lineCap !== "string") {
-      context.messages.push({
-        message: `lineCap must be one of the valid lineCap values`,
+      context.report({
+        messageId: "no-line-cap",
+        args: [context.tokenPath],
       });
 
       return false;
     }
 
     if (!lineCapValues.includes(lineCap)) {
-      context.messages.push({
-        message: `lineCap must be one of the valid lineCap values`,
+      context.report({
+        messageId: "invalid-line-cap-value",
+        args: [context.tokenPath],
       });
 
       return false;
@@ -52,8 +56,9 @@ export const validateStrokeStyle: TokenValidator<"strokeStyle"> = (
     return true;
   } else if (typeof value === "string") {
     if (!strokeStyleValues.includes(value)) {
-      context.messages.push({
-        message: `Token value must be one of the valid stroke style values`,
+      context.report({
+        messageId: "invalid-stroke-style-string",
+        args: [value, context.tokenPath],
       });
 
       return false;
@@ -61,9 +66,10 @@ export const validateStrokeStyle: TokenValidator<"strokeStyle"> = (
 
     return true;
   }
-  
-  context.messages.push({
-    message: `Token value must be a valid stroke style`,
+
+  context.report({
+    messageId: "invalid-stroke-style",
+    args: [context.tokenPath],
   });
 
   return false;

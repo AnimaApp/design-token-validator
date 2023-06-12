@@ -6,8 +6,9 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "vitest run",
-    "release": "npm run build && npm run test && npm publish --access public"
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "release": "npm run build && npm run test:ci && npm publish --access public"
   },
   "keywords": [],
   "author": "",

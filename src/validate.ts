@@ -1,26 +1,54 @@
+import { getTokenPath } from "./helpers/getTokenPath.js";
 import { getTokenType } from "./helpers/getTokenType.js";
 import { resolveValue } from "./helpers/resolveValue.js";
+import { MessageKey, getMessage } from "./messages.js";
 import { Results, Tokens } from "./types.js";
 import { validateBaseToken } from "./validators/baseToken.js";
 import { TokenValidator, typeValidators } from "./validators/type.js";
-import { VisitorFunctions, walk } from "./walk.js";
+import { GroupPath, VisitorFunctions, walk } from "./walk.js";
 
-export interface Context {
+export interface BaseContext {
   messages: Results;
   tokens: Tokens;
+  report: (details: {
+    messageId: MessageKey;
+    args: Array<string | number>;
+  }) => void;
+}
+
+export interface Context extends BaseContext {
+  groups: GroupPath[];
+  tokenPath: string;
 }
 
 export const validate = (tokens: Tokens): Results => {
-  const context: Context = {
+  const baseContext: BaseContext = {
     messages: [],
     tokens,
+    report(details) {
+      const { messageId, args } = details;
+      const message = getMessage(messageId, ...args);
+
+      this.messages.push({ message });
+    },
+  };
+
+  const getContext = ({ groups }: { groups: GroupPath[] }): Context => {
+    return {
+      messages: baseContext.messages,
+      tokens: baseContext.tokens,
+      report: baseContext.report,
+      groups,
+      tokenPath: getTokenPath(groups),
+    };
   };
 
   const visitorFunctions: VisitorFunctions = {
     group: () => {
       // Is there any validation we need to do here?
     },
-    token: (token, path) => {
+    token: (token, groups) => {
+      const context = getContext({ groups });
       validateBaseToken(token, context);
 
       const tokenValueOrAlias = Object.values(token)[0];
@@ -28,12 +56,15 @@ export const validate = (tokens: Tokens): Results => {
       const tokenValue = resolveValue(tokenValueOrAlias, context);
 
       if (!tokenValue) {
-        context.messages.push({ message: "Token value does not exist" });
+        context.report({
+          messageId: "token-does-not-exist",
+          args: [context.tokenPath],
+        });
 
         return;
       }
 
-      const type = getTokenType(tokenValue, context, path);
+      const type = getTokenType(tokenValue, context);
 
       const { $value } = tokenValue;
 
@@ -48,5 +79,5 @@ export const validate = (tokens: Tokens): Results => {
 
   walk(tokens, visitorFunctions);
 
-  return context.messages;
+  return baseContext.messages;
 };

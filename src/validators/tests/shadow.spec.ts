@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateShadow } from "../shadow.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("validateShadow", () => {
   beforeEach(() => {
@@ -54,6 +52,6 @@ describe("validateShadow", () => {
 
     expect(validateShadow(missingProperty, context)).toBe(false);
 
-    expect(context.messages.length).toBe(6);
+    expect(context.messages.length).toBe(3);
   });
 });

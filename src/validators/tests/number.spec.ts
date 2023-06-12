@@ -1,8 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateNumber } from "../number.js";
-const context = {
-  messages: [],
-  tokens: {},
-};
+
+const context = getTestContext({});
 
 describe("validateNumber", () => {
   beforeEach(() => {
@@ -14,6 +13,7 @@ describe("validateNumber", () => {
     expect(validateNumber(-1, context)).toBe(true);
     expect(validateNumber(123, context)).toBe(true);
     expect(validateNumber(0.5, context)).toBe(true);
+    expect(validateNumber(0, context)).toBe(true);
 
     expect(context.messages.length).toBe(0);
   });

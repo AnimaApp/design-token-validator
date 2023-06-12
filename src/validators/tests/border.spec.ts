@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateBorder } from "../border.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("validateBorder", () => {
   beforeEach(() => {
@@ -56,13 +54,13 @@ describe("validateBorder", () => {
       style: "black",
     };
     expect(validateBorder(invalidStyle, context)).toBe(false);
-    
+
     const missingProperty: any = {
       color: "#fff000",
       width: "1rem",
     };
     expect(validateBorder(missingProperty, context)).toBe(false);
 
-    expect(context.messages.length).toBe(8);
+    expect(context.messages.length).toBe(4);
   });
 });

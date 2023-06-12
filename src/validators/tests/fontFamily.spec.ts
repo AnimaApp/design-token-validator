@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateFontFamily } from "../fontFamily.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("validateFontFamily", () => {
   beforeEach(() => {

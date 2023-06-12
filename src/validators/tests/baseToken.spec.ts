@@ -1,10 +1,8 @@
 import { validateBaseToken } from "../baseToken.js";
 import { Token } from "../../types.js";
+import { getTestContext } from "../../testUtils.js";
 
-const context = {
-  tokens: {},
-  messages: [],
-};
+const context = getTestContext({});
 
 describe("validateBaseToken ", () => {
   beforeEach(() => {

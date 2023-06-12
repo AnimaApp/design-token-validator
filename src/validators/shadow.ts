@@ -8,50 +8,30 @@ export const validateShadow: TokenValidator<"shadow"> = (value, context) => {
   const isValidColor = validateColor(color, context);
 
   if (!isValidColor) {
-    context.messages.push({
-      message: `Token value must have a valid color property`,
-    });
-
     return false;
   }
 
   const isValidOffsetX = validateDimension(offsetX, context);
 
   if (!isValidOffsetX) {
-    context.messages.push({
-      message: `Token value must have a valid dimension property`,
-    });
-
     return false;
   }
 
   const isValidOffsetY = validateDimension(offsetY, context);
 
   if (!isValidOffsetY) {
-    context.messages.push({
-      message: `Token value must have a valid dimension property`,
-    });
-
     return false;
   }
 
   const isValidBlur = validateDimension(blur, context);
 
   if (!isValidBlur) {
-    context.messages.push({
-      message: `Token value must have a valid dimension property`,
-    });
-
     return false;
   }
 
   const isValidSpread = validateDimension(spread, context);
 
   if (!isValidSpread) {
-    context.messages.push({
-      message: `Token value must have a valid dimension property`,
-    });
-
     return false;
   }
 

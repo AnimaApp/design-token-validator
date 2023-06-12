@@ -1,9 +1,7 @@
+import { getTestContext } from "../../testUtils.js";
 import { validateTypography } from "../typography.js";
 
-const context = {
-  messages: [],
-  tokens: {},
-};
+const context = getTestContext({});
 
 describe("validateTypography", () => {
   beforeEach(() => {
@@ -41,6 +39,6 @@ describe("validateTypography", () => {
     };
     expect(validateTypography(missingProperties, context)).toBe(false);
 
-    expect(context.messages.length).toBe(4);
+    expect(context.messages.length).toBe(2);
   });
 });
