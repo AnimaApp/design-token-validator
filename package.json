@@ -1,12 +1,13 @@
 {
-  "name": "design-tokens-validator",
-  "version": "0.0.1",
+  "name": "@animaapp/design-tokens-validator",
+  "version": "0.0.2",
   "type": "module",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "vitest"
+    "test": "vitest run",
+    "release": "npm run build && npm run test && npm publish --access public"
   },
   "keywords": [],
   "author": "",

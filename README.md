@@ -10,11 +10,48 @@ By having tokens that conform to this standard, you ensure that your tokens will
 
 If you want to validate your tokens online, try out our free online tool: ...
 
-If you want to run this locally then follow the installation instructions
+If you want to run this locally then:
+
+1. Install the package in your project:
+
+```bash
+npm i @animaapp/design-tokens-validator
+```
+
+2. Import `validate` into your file:
+
+```javascript
+import { validate } from "@animaapp/design-tokens-validator";
+```
+
+3. Pass through your design tokens as a JavaScript object
+
+```javascript
+const tokens = {
+  brand: {
+    $description: "Design tokens from our brand guidelines",
+    color: {
+      $description: "Our brand's primary color palette",
+      acid green: {
+        $value: "#00ff66"
+      },
+      hot pink: {
+        $value: "#dd22cc"
+      }
+    }
+  }
+}
+
+const errors = validate(tokens)
+```
+
+4. Print out your errors to the console:
+
+```javascript
+console.log(errors);
+```
 
 ## Automate your entire design system workflow
-
-<!-- Add details about how Anima can solve this for you -->
 
 ## TODO
 
