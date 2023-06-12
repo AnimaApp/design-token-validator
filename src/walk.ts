@@ -23,10 +23,6 @@ export const walk = (
     const currentToken = { [key]: token };
 
     if (isGroup(currentToken)) {
-      if (visitorFunctions.group) {
-        visitorFunctions.group(currentToken, path);
-      }
-
       // ignore any properties that begin with "$"
       Object.keys(token).forEach((k) => {
         if (k.startsWith("$")) {
@@ -41,11 +37,22 @@ export const walk = (
       }
 
       const updatedPath: GroupPath[] = [...path, group];
+      if (visitorFunctions.group) {
+        visitorFunctions.group(currentToken, updatedPath);
+      }
 
       walk(token, visitorFunctions, updatedPath);
     } else if (isTokenValue(currentToken)) {
+      const tokenPath: GroupPath = { name: key };
+
+      if (type) {
+        tokenPath["type"] = type;
+      }
+
+      const updatedPath: GroupPath[] = [...path, tokenPath];
+
       if (visitorFunctions.token) {
-        visitorFunctions.token(currentToken, path);
+        visitorFunctions.token(currentToken, updatedPath);
       }
     }
   });

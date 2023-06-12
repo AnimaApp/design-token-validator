@@ -86,6 +86,7 @@ describe("walk", () => {
       { name: "token group" },
       { name: "token group two", type: "fontFamily" },
       { name: "nested group" },
+      { name: "Token cuatro", type: "fontWeight"}
     ]);
   });
 });

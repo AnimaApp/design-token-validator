@@ -6,7 +6,7 @@ As the number of tools that include design token support increases, so does the 
 
 By having tokens that conform to this standard, you ensure that your tokens will be interoperable across a suite of different design system management platforms, like Anima.
 
-With the *Design Tokens Validator* you can check whether your design tokens adhere to this standard, and how you can improve your tokens to ensure that they do
+With the _Design Tokens Validator_ you can check whether your design tokens adhere to this standard, and how you can improve your tokens to ensure that they do
 
 ## Getting Started
 
@@ -34,17 +34,17 @@ const tokens = {
     $description: "Design tokens from our brand guidelines",
     color: {
       $description: "Our brand's primary color palette",
-      acid green: {
-        $value: "#00ff66"
+      "acid green": {
+        $value: "#00ff66",
       },
-      hot pink: {
-        $value: "#dd22cc"
-      }
-    }
-  }
-}
+      "hot pink": {
+        $value: "#dd22cc",
+      },
+    },
+  },
+};
 
-const errors = validate(tokens)
+const errors = validate(tokens);
 ```
 
 4. Print out your errors to the console:
