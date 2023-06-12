@@ -6,6 +6,8 @@ As the number of tools that include design token support increases, so does the 
 
 By having tokens that conform to this standard, you ensure that your tokens will be interoperable across a suite of different design system management platforms, like Anima.
 
+With the *Design Tokens Validator* you can check whether your design tokens adhere to this standard, and how you can improve your tokens to ensure that they do
+
 ## Getting Started
 
 If you want to validate your tokens online, try out our free online tool: ...
@@ -53,6 +55,14 @@ console.log(errors);
 
 ## Automate your entire design system workflow
 
+This is just one of many tools created by Anima to help designers and developer improve their design system workflow.
+
+Check out [Anima](https://preview-www.animaapp.com/lp/design-token-automation?_storyblok=320565875&_storyblok_c=page&_storyblok_tk%5Bspace_id%5D=89137&_storyblok_tk%5Btimestamp%5D=1686212010&_storyblok_tk%5Btoken%5D=19820a1b10c94f3101ac5faa21c9df0e045887b9&_storyblok_version&_storyblok_lang=default&_storyblok_release=0) if you'd like to:
+
+- Convert styles to design tokens inside Figma
+- Push generated tokens directly to GitHub
+- Pull code updates back into Figma
+
 ## TODO
 
 ### Additional Features
@@ -65,7 +75,6 @@ console.log(errors);
 
 ### Improvements
 
-- [ ] Move messages over to the messages object. Use string interpolation to add the useful information to the message
 - [ ] Don't return early when the validator finds an error, as we can spot many errors in one pass
 
 ### Future ideas
