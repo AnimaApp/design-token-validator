@@ -4,7 +4,7 @@ export const getTestContext = ({
   tokens = {},
   groups = [],
   tokenPath = "",
-}): any => {
+}: any): any => {
   const context: Context = {
     messages: [],
     tokens,

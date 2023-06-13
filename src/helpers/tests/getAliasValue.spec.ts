@@ -64,4 +64,11 @@ describe("getAliasValue", () => {
 
     expect(aliasToken).toBe(undefined);
   });
+
+  it("returns undefined if path is empty", () => {
+    const aliasName = "{}";
+    const aliasToken = getAliasToken(aliasName, context);
+
+    expect(aliasToken).toBe(undefined);
+  });
 });

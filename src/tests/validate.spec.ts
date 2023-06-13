@@ -131,4 +131,17 @@ describe("validate", () => {
 
     expect(res.length).toBe(2);
   });
+
+  it("should return an error if alias does not resolve", () => {
+    const tokens: any = {
+      "600-100": {
+        $value: "{global.green.600-100}",
+        $type: "color",
+      },
+    };
+
+    const res = validate(tokens);
+
+    expect(res.length).toBe(2);
+  });
 });
