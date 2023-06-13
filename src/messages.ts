@@ -22,7 +22,8 @@ export type MessageKey =
   | "invalid-gradient-type"
   | "empty-gradient"
   | "invalid-number"
-  | "invalid-json-number";
+  | "invalid-json-number"
+  | "unknown-token-type";
 
 export const getMessage = (
   key: MessageKey,
@@ -31,7 +32,7 @@ export const getMessage = (
   const messages: Record<MessageKey, string> = {
     "token-does-not-exist": `Value for token "${args[0]}" does not exist`,
     "token-does-not-have-type": `Token "${args[0]}" does not have a valid type`,
-    "token-not-found-for-path": `Alias "${args[0]}" contains path "${args[1]}" does not resolve to a token`,
+    "token-not-found-for-path": `Alias "${args[0]}" containing path "${args[1]}" does not resolve to a token`,
     "invalid-color": `Value "${args[0]}" for token "${args[1]}" is not a valid color value`,
     "no-dash-array": `Token "${args[0]}" must include a dashArray`,
     "invalid-dash-array": `Property "dashArray" for token "${args[0]}" must be an array of dimensions`,
@@ -53,6 +54,7 @@ export const getMessage = (
     "empty-gradient": `Property "gradient" for token "${args[0]}" does not contain any values`,
     "invalid-number": `Property "number" for token "${args[0]}" must be a valid number`,
     "invalid-json-number": `Property "number" for token "${args[0]}" must not be NaN or Infinity`,
+    "unknown-token-type": `Token "${args[0]}" is not a recognised token. Ensure your tokens match the format of the specification.`,
   };
 
   return messages[key];

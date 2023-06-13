@@ -10,7 +10,7 @@ With the _Design Tokens Validator_ you can check whether your design tokens adhe
 
 ## Getting Started
 
-If you want to validate your tokens online, try out our free online tool: ...
+If you want to validate your tokens online, try out our free [Design Tokens Validator](https://animaapp.github.io/design-token-validator-site/).
 
 If you want to run this locally then:
 

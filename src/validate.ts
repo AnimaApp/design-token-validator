@@ -75,6 +75,14 @@ export const validate = (tokens: Tokens): Results => {
         typeValidator($value, context);
       }
     },
+    unknown: (token, groups) => {
+      const context = getContext({ groups });
+
+      context.report({
+        messageId: "unknown-token-type",
+        args: [context.tokenPath],
+      });
+    },
   };
 
   walk(tokens, visitorFunctions);

@@ -114,4 +114,21 @@ describe("validate", () => {
 
     expect(results.length).toBe(1);
   });
+
+  it("returns error messages if design tokens do not contain a $value", () => {
+    const tokens: any = {
+      global: {
+        green: {
+          "600-100": {
+            value: "#071926",
+            type: "color",
+          },
+        },
+      },
+    };
+
+    const res = validate(tokens);
+
+    expect(res.length).toBe(2);
+  });
 });

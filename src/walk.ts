@@ -9,6 +9,7 @@ export type GroupPath = {
 export interface VisitorFunctions {
   group?: (group: TokenGroup, path: GroupPath[]) => void;
   token?: (token: Token, path: GroupPath[]) => void;
+  unknown?: (token: Token, path: GroupPath[]) => void;
 }
 
 export const walk = (
@@ -54,6 +55,10 @@ export const walk = (
       if (visitorFunctions.token) {
         visitorFunctions.token(currentToken, updatedPath);
       }
+    } else if (visitorFunctions.unknown) {
+      const tokenPath: GroupPath = { name: key };
+      const updatedPath: GroupPath[] = [...path, tokenPath];
+      visitorFunctions.unknown(currentToken, updatedPath);
     }
   });
 

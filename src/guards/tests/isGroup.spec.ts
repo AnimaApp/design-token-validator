@@ -65,4 +65,12 @@ describe("isGroup", () => {
 
     expect(isGroup(tokenGroup2)).toBe(false);
   });
+
+  it("returns false for groups that do not have objects as children", () => {
+    const tokenGroup: TokenGroup = {
+      "token group": "123",
+    };
+
+    expect(isGroup(tokenGroup)).toBe(false); 
+  })
 });
