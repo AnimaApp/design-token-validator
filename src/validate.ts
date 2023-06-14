@@ -1,3 +1,4 @@
+import { FormattedMessages, formatMessages } from "./helpers/formatMessages.js";
 import { getTokenPath } from "./helpers/getTokenPath.js";
 import { getTokenType } from "./helpers/getTokenType.js";
 import { resolveValue } from "./helpers/resolveValue.js";
@@ -21,7 +22,7 @@ export interface Context extends BaseContext {
   tokenPath: string;
 }
 
-export const validate = (tokens: Tokens): Results => {
+export const validate = (tokens: Tokens): FormattedMessages => {
   const baseContext: BaseContext = {
     messages: [],
     tokens,
@@ -29,7 +30,7 @@ export const validate = (tokens: Tokens): Results => {
       const { messageId, args } = details;
       const message = getMessage(messageId, ...args);
 
-      this.messages.push({ message });
+      this.messages.push(message);
     },
   };
 
@@ -56,11 +57,6 @@ export const validate = (tokens: Tokens): Results => {
       const tokenValue = resolveValue(tokenValueOrAlias, context);
 
       if (!tokenValue) {
-        context.report({
-          messageId: "token-does-not-exist",
-          args: [context.tokenPath],
-        });
-
         return;
       }
 
@@ -75,7 +71,7 @@ export const validate = (tokens: Tokens): Results => {
         typeValidator($value, context);
       }
     },
-    unknown: (token, groups) => {
+    unknown: (_, groups) => {
       const context = getContext({ groups });
 
       context.report({
@@ -87,5 +83,7 @@ export const validate = (tokens: Tokens): Results => {
 
   walk(tokens, visitorFunctions);
 
-  return baseContext.messages;
+  const messages = formatMessages(baseContext.messages);
+
+  return messages;
 };

@@ -1,5 +1,6 @@
 import { validate } from "../validate.js";
 import { Tokens } from "../types.js";
+import exampleTokens from "../tokens/example.json";
 
 describe("validate", () => {
   it("returns an empty array if design tokens are valid", () => {
@@ -100,7 +101,13 @@ describe("validate", () => {
 
     const results = validate(tokens);
 
-    expect(results.length).toBe(0);
+    expect(Object.values(results).length).toBe(0);
+  });
+
+  it("returns error messages for the example file token", () => {
+    const results = validate(exampleTokens);
+
+    expect(Object.values(results).length).toBe(3);
   });
 
   it("returns error messages if design tokens contains in invalid token", () => {
@@ -112,7 +119,7 @@ describe("validate", () => {
 
     const results = validate(tokens);
 
-    expect(results.length).toBe(1);
+    expect(Object.values(results).length).toBe(1);
   });
 
   it("returns error messages if design tokens do not contain a $value", () => {
@@ -129,7 +136,7 @@ describe("validate", () => {
 
     const res = validate(tokens);
 
-    expect(res.length).toBe(1);
+    expect(Object.values(res).length).toBe(1);
   });
 
   it("returns an error if alias does not resolve", () => {
@@ -142,6 +149,6 @@ describe("validate", () => {
 
     const res = validate(tokens);
 
-    expect(res.length).toBe(2);
+    expect(Object.values(res).length).toBe(1);
   });
 });

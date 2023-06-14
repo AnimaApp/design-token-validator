@@ -4,10 +4,15 @@ import {
   tokenTypes,
   weightAliases,
 } from "./constants.js";
+import { Message } from "./messages.js";
 
 /* Utility Types */
 
 export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
+
+export type ParialRecord<K extends keyof any, T> = {
+  [P in K]?: T;
+};
 
 /* Design Token Types */
 
@@ -146,8 +151,4 @@ export type TokenValue =
   | GradientToken
   | TypographyToken;
 
-interface Result {
-  message: string;
-}
-
-export type Results = Result[];
+export type Results = Message[];
