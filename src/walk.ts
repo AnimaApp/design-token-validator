@@ -1,4 +1,5 @@
-import { isGroup, isTokenValue } from "./guards/isGroup.js";
+import { isGroup } from "./guards/isGroup.js";
+import { isTokenValue } from "./guards/isTokenValue.js";
 import { Token, TokenGroup, Tokens, Type } from "./types.js";
 
 export type GroupPath = {

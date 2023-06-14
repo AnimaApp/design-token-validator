@@ -91,9 +91,9 @@ describe("validate", () => {
         $type: "typography",
       },
       group: {
+        $type: "color",
         "color token": {
           $value: "#fff000",
-          $type: "color",
         },
       },
     };
@@ -129,10 +129,10 @@ describe("validate", () => {
 
     const res = validate(tokens);
 
-    expect(res.length).toBe(2);
+    expect(res.length).toBe(1);
   });
 
-  it("should return an error if alias does not resolve", () => {
+  it("returns an error if alias does not resolve", () => {
     const tokens: any = {
       "600-100": {
         $value: "{global.green.600-100}",

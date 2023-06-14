@@ -65,6 +65,8 @@ Check out [Anima](https://preview-www.animaapp.com/lp/design-token-automation?_s
 
 ## TODO
 
+- [ ] Ensure no invalid properties exist in a $value
+
 ### Additional Features
 
 - [ ] Handle resolution of local design token file
@@ -72,6 +74,7 @@ Check out [Anima](https://preview-www.animaapp.com/lp/design-token-automation?_s
 - [ ] Handle external resolution of a design token file
 - [ ] Include link to relevant location in the design system spec
 - [ ] Add severity to messages (ERROR + WARN)
+- [ ] Automatically fix common issues
 
 ### Improvements
 

@@ -4,7 +4,7 @@ export const isGroup = (tokens: Tokens): tokens is TokenGroup => {
   const value = Object.values(tokens)[0];
 
   if (typeof value !== "object") {
-    return false
+    return false;
   }
 
   const keys = Object.keys(value).filter((key) => {
@@ -15,14 +15,11 @@ export const isGroup = (tokens: Tokens): tokens is TokenGroup => {
     return false;
   }
 
-  return true;
-};
+  const validValues = Object.values(value).filter((values) => {
+    return typeof values === "object";
+  });
 
-export const isTokenValue = (
-  token: Tokens
-): token is { [key: string]: TokenValue } => {
-  const value = Object.values(token)[0];
-  if (!value.hasOwnProperty("$value") && !value.hasOwnProperty("$type")) {
+  if (validValues.length === 0) {
     return false;
   }
 

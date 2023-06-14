@@ -1,4 +1,4 @@
-import { isTokenValue } from "../guards/isGroup.js";
+import { isTokenValue } from "../guards/isTokenValue.js";
 import { TokenGroup, TokenValue, Tokens } from "../types.js";
 import { Context } from "../validate.js";
 import { splitAliasPath } from "./splitAliasPath.js";

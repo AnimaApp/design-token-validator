@@ -71,6 +71,17 @@ describe("isGroup", () => {
       "token group": "123",
     };
 
-    expect(isGroup(tokenGroup)).toBe(false); 
-  })
+    expect(isGroup(tokenGroup)).toBe(false);
+  });
+
+  it("returns false none of the children are objects", () => {
+    const tokenGroup: TokenGroup = {
+      "token group": {
+        value: "2rem",
+        type: "dimension",
+      },
+    };
+
+    expect(isGroup(tokenGroup)).toBe(false);
+  });
 });
