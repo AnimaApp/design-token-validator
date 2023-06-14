@@ -1,4 +1,5 @@
 export type MessageKey =
+  | "invalid-json"
   | "token-does-not-have-name"
   | "token-has-invalid-characters"
   | "token-does-not-have-value"
@@ -40,6 +41,13 @@ export const getMessage = (
   ...args: Array<string | number>
 ) => {
   const messages: Record<MessageKey, Message> = {
+    "invalid-json": {
+      key: "invalid-json",
+      label: "Invalid JSON",
+      message: "Your tokens are not valid JSON",
+      reference:
+        "https://design-tokens.github.io/community-group/format/#file-format",
+    },
     "token-does-not-have-name": {
       key: "token-does-not-have-name",
       reference:
