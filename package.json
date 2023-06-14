@@ -1,6 +1,6 @@
 {
   "name": "@animaapp/design-tokens-validator",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "description": "",
   "main": "dist/index.js",
