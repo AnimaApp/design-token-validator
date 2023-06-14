@@ -43,7 +43,7 @@ describe("getTokenType", () => {
       $value: "#fff",
     };
 
-    const badContext = getTestContext({})
+    const badContext = getTestContext({});
 
     expect(getTokenType(token, badContext)).toBeUndefined();
 
@@ -56,5 +56,40 @@ describe("getTokenType", () => {
     };
 
     expect(getTokenType(token, context)).toBe("color");
+  });
+
+  it("appends error if token has invalid type", () => {
+    const badContext = getTestContext({
+      tokenPath: "group.nested group.color",
+      groups: [
+        {
+          name: "group",
+          type: "coloor",
+        },
+      ],
+      tokens: {
+        group: {
+          $type: "color",
+          color: {
+            $value: "#ffffff",
+          },
+        },
+      },
+    });
+
+    const invalidType: any = {
+      $value: "#ffffff",
+      $type: "colooor",
+    };
+
+    expect(getTokenType(invalidType, badContext)).toBeUndefined();
+
+    const invalidGroupType: any = {
+      $value: "#ffffff",
+    };
+
+    expect(getTokenType(invalidGroupType, badContext)).toBeUndefined();
+
+    expect(badContext.messages.length).toBe(2);
   });
 });

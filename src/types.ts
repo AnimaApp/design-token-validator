@@ -1,6 +1,7 @@
 import {
   lineCapValues,
   strokeStyleValues,
+  tokenTypes,
   weightAliases,
 } from "./constants.js";
 
@@ -10,20 +11,7 @@ export type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 
 /* Design Token Types */
 
-export type Type =
-  | "color"
-  | "dimension"
-  | "fontFamily"
-  | "fontWeight"
-  | "duration"
-  | "cubicBezier"
-  | "number"
-  | "strokeStyle"
-  | "border"
-  | "transition"
-  | "shadow"
-  | "gradient"
-  | "typography";
+export type Type = (typeof tokenTypes)[number];
 
 export type Tokens = TokenGroup | TokenValue | AliasToken;
 

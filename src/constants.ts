@@ -1,3 +1,19 @@
+export const tokenTypes = [
+  "color",
+  "dimension",
+  "fontFamily",
+  "fontWeight",
+  "duration",
+  "cubicBezier",
+  "number",
+  "strokeStyle",
+  "border",
+  "transition",
+  "shadow",
+  "gradient",
+  "typography",
+] as const;
+
 export const weightAliases = [
   "thin",
   "hairline",

@@ -3,7 +3,7 @@ import { Token, TokenGroup, Tokens, Type } from "./types.js";
 
 export type GroupPath = {
   name: string;
-  type?: string;
+  type?: Type;
 };
 
 export interface VisitorFunctions {
