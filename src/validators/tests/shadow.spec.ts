@@ -52,6 +52,6 @@ describe("validateShadow", () => {
 
     expect(validateShadow(missingProperty, context)).toBe(false);
 
-    expect(context.messages.length).toBe(3);
+    expect(context.messages.length).toBe(4);
   });
 });

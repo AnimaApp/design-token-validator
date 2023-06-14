@@ -2,52 +2,35 @@ import { Token } from "../types.js";
 import { Context } from "../validate.js";
 
 export const validateBaseToken = (token: Token, context: Context) => {
-  const results = context.messages;
-
   const name = Object.keys(token)[0];
 
   if (!name) {
-    results.push({
-      message: "Token must have a name",
+    context.report({
+      messageId: "token-does-not-have-name",
+      args: [context.tokenPath],
     });
   }
 
   if (name) {
-    if (typeof name !== "string") {
-      results.push({
-        message: "Token name must be a string",
-      });
-    }
-
     if (name.startsWith("$")) {
-      results.push({
-        message: "Token name must not start with $",
+      context.report({
+        messageId: "token-has-invalid-characters",
+        args: [context.tokenPath],
       });
     }
 
-    // These three only apply if valid is not an alias
-    if (name.includes("{")) {
-      results.push({
-        message: "Token name must not contain {",
-      });
-    }
-
-    if (name.includes("}")) {
-      results.push({
-        message: "Token name must not contain }",
-      });
-    }
-
-    if (name.includes(".")) {
-      results.push({
-        message: "Token name must not contain .",
+    if (name.includes("{") || name.includes("}") || name.includes(".")) {
+      context.report({
+        messageId: "token-has-invalid-characters",
+        args: [context.tokenPath],
       });
     }
   }
 
   if (!token[name].$value) {
-    results.push({
-      message: "Token must have a value",
+    context.report({
+      messageId: "token-does-not-have-value",
+      args: [context.tokenPath],
     });
   }
 };

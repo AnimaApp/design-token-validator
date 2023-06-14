@@ -1,4 +1,7 @@
 export type MessageKey =
+  | "token-does-not-have-name"
+  | "token-has-invalid-characters"
+  | "token-does-not-have-value"
   | "token-does-not-exist"
   | "token-does-not-have-type"
   | "token-not-found-for-path"
@@ -30,6 +33,9 @@ export const getMessage = (
   ...args: Array<string | number>
 ) => {
   const messages: Record<MessageKey, string> = {
+    "token-does-not-have-name": `Token in path "${args[0]}" does not have a name`,
+    "token-does-not-have-value": `Token "${args[0]}" does not have a value`,
+    "token-has-invalid-characters": `Token "${args[0]}" contains invalid characters. It cannot start with "$" or contain "{" or "}" or "."`, 
     "token-does-not-exist": `Value for token "${args[0]}" does not exist`,
     "token-does-not-have-type": `Token "${args[0]}" does not have a valid type`,
     "token-not-found-for-path": `Alias "${args[0]}" containing path "${args[1]}" does not resolve to a token`,

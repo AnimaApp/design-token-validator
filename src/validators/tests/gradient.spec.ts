@@ -46,6 +46,10 @@ describe("validateGradient", () => {
 
     expect(validateGradient(invalidNumber, context)).toBe(false);
 
-    expect(context.messages.length).toBe(3);
+    const invalidType: any = "linear-gradient(0deg, #fff000, #000fff)";
+
+    expect(validateGradient(invalidType, context)).toBe(false);
+
+    expect(context.messages.length).toBe(4);
   });
 });

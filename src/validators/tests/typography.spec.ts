@@ -39,6 +39,6 @@ describe("validateTypography", () => {
     };
     expect(validateTypography(missingProperties, context)).toBe(false);
 
-    expect(context.messages.length).toBe(2);
+    expect(context.messages.length).toBe(5);
   });
 });

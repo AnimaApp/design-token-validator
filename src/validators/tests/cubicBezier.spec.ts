@@ -17,7 +17,8 @@ describe("validateCubicBezier", () => {
     expect(validateCubicBezier([0, 0, 1, 1, 1] as any, context)).toBe(false);
     expect(validateCubicBezier([0, 0, 100, 1], context)).toBe(false);
     expect(validateCubicBezier([-200, 0, 100, 1], context)).toBe(false);
+    expect(validateCubicBezier([-200, 0, "100", 1] as any, context)).toBe(false);
 
-    expect(context.messages.length).toBe(4);
+    expect(context.messages.length).toBe(5);
   });
 });

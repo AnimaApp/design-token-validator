@@ -21,7 +21,8 @@ describe("validateFontWeight", () => {
     expect(validateFontWeight(1001, context)).toBe(false);
     expect(validateFontWeight("akakaka" as any, context)).toBe(false);
     expect(validateFontWeight("boold" as any, context)).toBe(false);
+    expect(validateFontWeight(["demi-bold"] as any, context)).toBe(false);
 
-    expect(context.messages.length).toBe(4);
+    expect(context.messages.length).toBe(5);
   });
 });

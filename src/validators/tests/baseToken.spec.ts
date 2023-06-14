@@ -22,19 +22,6 @@ describe("validateBaseToken ", () => {
     expect(context.messages.length).toBe(0);
   });
 
-  it("fails a token if name is a number", () => {
-    const token: Token = {
-      123.4: {
-        $value: "#fff000",
-        $type: "color",
-      },
-    };
-
-    validateBaseToken(token, context);
-
-    expect(context.messages.length).toBe(1);
-  });
-
   it("fails a token if name begins with $", () => {
     const token: Token = {
       "$token name": {
@@ -87,10 +74,11 @@ describe("validateBaseToken ", () => {
     expect(context.messages.length).toBe(1);
   });
 
-  it("fails a token if no value is present", () => {
+  it("fails if token name is falsy", () => {
     const token: any = {
-      "token name": {
+      "": {
         $type: "color",
+        $value: "#fff000",
       },
     };
 

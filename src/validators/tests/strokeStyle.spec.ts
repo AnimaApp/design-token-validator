@@ -57,6 +57,26 @@ describe("validateStrokeStyle", () => {
 
     expect(validateStrokeStyle(invalidDashArray, context)).toBe(false);
 
-    expect(context.messages.length).toBe(2);
+    const missingDashArray: any = {
+      lineCap: "round",
+    };
+
+    expect(validateStrokeStyle(missingDashArray, context)).toBe(false);
+
+    const invalidDashArrayType: any = {
+      dashArray: "2rem",
+      lineCap: "round",
+    };
+
+    expect(validateStrokeStyle(invalidDashArrayType, context)).toBe(false);
+
+    const invalidLineCap: any = {
+      dashArray: ["1rem", "2rem"],
+      lineCap: "octagon",
+    };
+
+    expect(validateStrokeStyle(invalidLineCap, context)).toBe(false);
+
+    expect(context.messages.length).toBe(5);
   });
 });
