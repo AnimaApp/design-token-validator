@@ -22,6 +22,7 @@ export type MessageKey =
   | "invalid-font-family"
   | "invalid-font-weight"
   | "invalid-font-weight-alias"
+  | "alias-circular-dependency"
   | "invalid-font-weight-number"
   | "invalid-gradient-type"
   | "empty-gradient"
@@ -89,6 +90,12 @@ export const getMessage = (
         "https://design-tokens.github.io/community-group/format/#aliases-references",
       label: "Alias does not resolve to token",
       message: `Alias "${args[0]}" containing path "${args[1]}" does not resolve to a token`,
+    },
+    "alias-circular-dependency": {
+      key: 'alias-circular-dependency',
+      reference: 'https://design-tokens.github.io/community-group/format/#aliases-references',
+      label: "Alias circular dependency",
+      message: `Resolving alias ${args[0]} resulted in a circular reference. Ensure that your alias resolves to an explicit value`
     },
     "invalid-color": {
       key: "invalid-color",

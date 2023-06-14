@@ -5,10 +5,23 @@ import { getAliasToken } from "./getAliasValue.js";
 
 export const resolveValue = (
   token: TokenValue | AliasToken,
-  context: Context
+  context: Context,
+  previousAliases: string[] = []
 ): TokenValue | undefined => {
   if (isValidAlias(token)) {
     const value = token.$value;
+
+    if (previousAliases.includes(value)) {
+      context.report({
+        messageId: "alias-circular-dependency",
+        args: [value],
+      });
+
+      return;
+    }
+
+    previousAliases.push(value);
+
     const aliasToken = getAliasToken(value, context);
 
     if (!aliasToken) {
@@ -20,7 +33,7 @@ export const resolveValue = (
     }
 
     if (isValidAlias(aliasToken)) {
-      return resolveValue(aliasToken, context);
+      return resolveValue(aliasToken, context, previousAliases);
     }
 
     return aliasToken;

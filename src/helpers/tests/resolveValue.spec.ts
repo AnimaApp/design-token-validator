@@ -12,6 +12,12 @@ const tokens = {
   "double white alias": {
     $value: "{white alias}",
   },
+  "alias-1": {
+    $value: "{alias-2}",
+  },
+  "alias-2": {
+    $value: "{alias-1}",
+  },
 };
 
 const context = getTestContext({ tokens });
@@ -62,5 +68,12 @@ describe("resolveValue", () => {
 
     expect(resolveValue(token, context)).toBeUndefined();
     expect(context.messages.length).toBe(1);
+  });
+
+  it("appends error if alias resoles to a circular reference alias", () => {
+    const aliasName = { $value: "{alias-1}" };
+    const aliasToken = resolveValue(aliasName, context);
+
+    expect(aliasToken).toBe(undefined);
   });
 });

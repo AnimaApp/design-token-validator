@@ -66,7 +66,6 @@ Check out [Anima](https://preview-www.animaapp.com/lp/design-token-automation?_s
 ## TODO
 
 - [ ] Ensure no invalid properties exist in a $value
-- [ ] Track circular aliases
 
 ### Additional Features
 

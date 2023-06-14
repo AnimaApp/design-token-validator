@@ -54,7 +54,7 @@ const getValueByPath = (
 
   const currentValue = tokens[currentPath];
 
-  // TODO ignore any any properties that begin with "$"
+  // TODO ignore any properties that begin with "$"
   if (!currentValue || typeof currentValue === "string") {
     return;
   }
