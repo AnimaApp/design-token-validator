@@ -31,7 +31,7 @@ describe("resolveValue", () => {
     const token = {
       $type: "color",
       $value: "#ffffff",
-    };
+    } as const;
 
     expect(resolveValue(token, context)).toEqual({
       $type: "color",
