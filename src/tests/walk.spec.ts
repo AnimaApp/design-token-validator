@@ -83,10 +83,11 @@ describe("walk", () => {
     walk(tokens, visitorFunctions);
 
     expect(path).toEqual([
+      { name: "root" },
       { name: "token group" },
       { name: "token group two", type: "fontFamily" },
       { name: "nested group" },
-      { name: "Token cuatro", type: "fontWeight"}
+      { name: "Token cuatro", type: "fontWeight" },
     ]);
   });
 });

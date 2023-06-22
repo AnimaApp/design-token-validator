@@ -1,4 +1,5 @@
 import { isGroup } from "./guards/isGroup.js";
+import { isRootException } from "./guards/isRootException.js";
 import { isTokenValue } from "./guards/isTokenValue.js";
 import { Token, TokenGroup, Tokens, Type } from "./types.js";
 
@@ -16,9 +17,20 @@ export interface VisitorFunctions {
 export const walk = (
   tokens: Tokens,
   visitorFunctions: VisitorFunctions,
-  path: GroupPath[] = []
+  initialPath: GroupPath[] = []
 ) => {
   const tokenEntries = Object.entries(tokens);
+
+  let path = initialPath;
+  const isRoot = initialPath.length === 0;
+
+  if (isRoot) {
+    path = [{ name: "root" }];
+
+    if (tokens.$type) {
+      path[0]["type"] = tokens.$type;
+    }
+  }
 
   tokenEntries.forEach(([key, token]) => {
     const type = token.$type;
@@ -56,6 +68,8 @@ export const walk = (
       if (visitorFunctions.token) {
         visitorFunctions.token(currentToken, updatedPath);
       }
+    } else if (isRootException(currentToken, isRoot)) {
+      // do nothing
     } else if (visitorFunctions.unknown) {
       const tokenPath: GroupPath = { name: key };
       const updatedPath: GroupPath[] = [...path, tokenPath];

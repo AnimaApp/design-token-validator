@@ -1,11 +1,8 @@
 import { tokenTypes } from "../constants.js";
+import { isValidTokenType } from "../guards/isValidTokenType.js";
 import { TokenValueBeforeTypeResolution, Type } from "../types.js";
 import { Context } from "../validate.js";
 import { getClosestGroupType } from "./getClosestGroupType.js";
-
-const isValidTokenType = (tokenType: Type): boolean => {
-  return tokenTypes.includes(tokenType);
-};
 
 export const getTokenType = (
   token: TokenValueBeforeTypeResolution,

@@ -105,7 +105,7 @@ describe("validate", () => {
   });
 
   it("returns error messages for the example file token", () => {
-    const results = validate(exampleTokens);
+    const results = validate(exampleTokens as any);
 
     expect(Object.values(results).length).toBe(3);
   });
@@ -150,5 +150,18 @@ describe("validate", () => {
     const res = validate(tokens);
 
     expect(Object.values(res).length).toBe(1);
+  });
+
+  it("handles top level $type", () => {
+    const tokens: any = {
+      $type: "color",
+      "example-token": {
+        $value: "#123456",
+      },
+    };
+
+    const results = validate(tokens);
+
+    expect(Object.values(results).length).toBe(0);
   });
 });

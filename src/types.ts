@@ -27,7 +27,7 @@ export type Token = {
 export type TokenValueBeforeTypeResolution = Optional<TokenValue, "$type">;
 
 export type TokenGroup = {
-  $type?: string;
+  $type?: Type;
   [key: string]: string | TokenValue | TokenGroup | AliasToken | undefined;
 };
 
@@ -133,6 +133,7 @@ type TypographyToken = {
 };
 
 export type AliasToken = {
+  $type?: Type;
   $value: string;
 };
 
